@@ -1,6 +1,16 @@
 import React from 'react';
 import Task from './components/Task'
 import TaskInput from './components/TaskInput';
+import { Paper, Grid, Typography } from '@material-ui/core';
+
+const styles = {
+  Paper: {
+    padding: 20,
+    margin: 'auto',
+    textAlign: 'center',
+    width: 500
+  }
+}
 
 
 class App extends React.Component {
@@ -76,8 +86,15 @@ class App extends React.Component {
 
     return(
       <div className='App'>
+        <Grid container spacing={0}>
+          <Grid items xs={12}>
+            <Paper style={styles.Paper}>
+              <TaskInput addTask={this.addTask}></TaskInput>
+            </Paper>
+          </Grid>
+        </Grid>
         <h1 className='top'>Tasks: {activeTasks.length}</h1>
-        <TaskInput addTask={this.addTask}></TaskInput>
+        
         {[...activeTasks, ...doneTask].map(task => (
           <Task 
           doneTask={() => this.doneTask(task.id)}
