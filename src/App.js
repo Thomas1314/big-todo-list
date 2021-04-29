@@ -1,16 +1,16 @@
-import React from 'react';
-import Task from './components/Task'
+import React, { Fragment } from 'react';
+import Task from './components/Todo'
 import TaskInput from './components/TaskInput';
-import { Paper, Grid, Typography } from '@material-ui/core';
+import { Paper, Grid, Typography } from "@material-ui/core";
 
 const styles = {
   Paper: {
     padding: 20,
-    margin: 'auto',
-    textAlign: 'center',
+    margin: "auto",
+    textAlign: "center",
     width: 500
   }
-}
+};
 
 
 class App extends React.Component {
@@ -25,6 +25,8 @@ class App extends React.Component {
       ]    
     }
   }
+
+  
 
   
   addTask = (task) => {
@@ -67,16 +69,6 @@ class App extends React.Component {
     this.setState({ tasks: newTasks });
   }
 
-  //editTask = (title, id) => {
-    //const items = this.state.tasks;
-
-    //this.setState({
-      //tasks: items.filter(item => item.id !== id),
-      //tasks: {
-        //title
-      //}
-    //});
-  //}
 
   render() {
     const { tasks } = this.state;
@@ -85,27 +77,31 @@ class App extends React.Component {
 
 
     return(
-      <div className='App'>
+      <Fragment>
+        <Paper>
+        <h1 className='top'>Tasks: {activeTasks.length}</h1>
+        </Paper>
+        
         <Grid container spacing={0}>
-          <Grid items xs={12}>
+          <Grid item xs={12}>
             <Paper style={styles.Paper}>
               <TaskInput addTask={this.addTask}></TaskInput>
             </Paper>
           </Grid>
-        </Grid>
-        <h1 className='top'>Tasks: {activeTasks.length}</h1>
-        
+
+        {/*<Grid xs={12} styles={styles.Paper}>
         {[...activeTasks, ...doneTask].map(task => (
           <Task 
           doneTask={() => this.doneTask(task.id)}
           returnToUnDoneTask={() => this.returnToUnDoneTask(task.id)}
           deleteTask={() => this.deleteTask(task.id)}
-          //editTask={() => this.editTask(task.id)}
           task={task} 
           key={task.id}
           ></Task>
           ))}
-      </div>
+        </Grid>*/}
+        </Grid>
+      </Fragment>
     );
   } 
 }

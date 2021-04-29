@@ -1,4 +1,6 @@
 import React from 'react';
+import Input from "@material-ui/core/Input";
+import Button from "@material-ui/core/Button";
 
 class TaskInput extends React.Component {
     constructor(props) {
@@ -29,13 +31,24 @@ class TaskInput extends React.Component {
         const { input } = this.state;
 
         return (
-            <div className='task-input'>
-                <input
+            <div style={{ display: "flex" }}>
+                <Input
                 onKeyPress={this.handleEnter}
                 onChange={this.inputChange}
                 value={input}
-                ></input>
-                <button onClick={this.addTask}>ADD</button>
+                placeholder='Todo'
+                style={{ width: "90%" }}
+                />
+
+                <Button 
+                onClick={this.addTask}
+                type="submit"
+                variant="contained"
+                color="primary"
+                style={{ width: "10%" }}
+                >
+                    Add
+                </Button>
             </div>
         );
     }
