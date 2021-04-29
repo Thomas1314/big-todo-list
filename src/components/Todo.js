@@ -39,13 +39,23 @@ const Task = ({ task, ...props }) => {
             <span style={styles.Todo}>{task.title}</span>
             <ActionButton></ActionButton>
 
-            <IconButton
-            color="secondary"
-            aria-label="Delete"
-            onClick={props.deleteTodo}
-          >
-            <Delete fontSize="small" />
-            </IconButton>
+              <IconButton
+                color="primary"
+                aria-label="Edit"
+                style={styles.Icon}
+                onClick={() => this.props.updateTask(this.props.index)}
+              >
+                <Build fontSize="small" />
+              </IconButton>
+            
+              <IconButton
+                className='action-btn'
+                color="secondary"
+                aria-label="Delete"
+                onClick={props.deleteTask}
+              >
+                <Delete fontSize="small" />
+              </IconButton>
 
           </Paper>
         </Grid>

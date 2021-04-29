@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import Task from './components/Todo'
 import TaskInput from './components/TaskInput';
-import { Paper, Grid, Typography } from "@material-ui/core";
+import Todo from './components/Todo';
+import { Paper, Grid } from "@material-ui/core";
 
 const styles = {
   Paper: {
@@ -69,6 +69,16 @@ class App extends React.Component {
     this.setState({ tasks: newTasks });
   }
 
+  updateTask = (id, newName) => {
+    const editedTaskList = this.state.tasks.map(task => {
+      if (id === task.id) {
+        return {...task, name: newName}
+      }
+      return task;
+    })
+    this.setState(editedTaskList);
+  }
+
 
   render() {
     const { tasks } = this.state;
@@ -78,10 +88,14 @@ class App extends React.Component {
 
     return(
       <Fragment>
+
         <Paper>
-        <h1 className='top'>Tasks: {activeTasks.length}</h1>
+          <h1>Active Tasks: {activeTasks.length}</h1>
+          <button type='button'>Show All Tasks</button>
+          <button>show active tasks</button>
+          <button>show completed tasks</button>
         </Paper>
-        
+          
         <Grid container spacing={0}>
           <Grid item xs={12}>
             <Paper style={styles.Paper}>
@@ -89,17 +103,20 @@ class App extends React.Component {
             </Paper>
           </Grid>
 
-        {/*<Grid xs={12} styles={styles.Paper}>
-        {[...activeTasks, ...doneTask].map(task => (
-          <Task 
-          doneTask={() => this.doneTask(task.id)}
-          returnToUnDoneTask={() => this.returnToUnDoneTask(task.id)}
-          deleteTask={() => this.deleteTask(task.id)}
-          task={task} 
-          key={task.id}
-          ></Task>
-          ))}
-        </Grid>*/}
+        <Grid item xs={12} style={styles.Paper}>
+          <Grid container>
+            {[...activeTasks, ...doneTask].map(task => (
+            <Todo 
+            doneTask={() => this.doneTask(task.id)}
+            returnToUnDoneTask={() => this.returnToUnDoneTask(task.id)}
+            deleteTask={() => this.deleteTask(task.id)}
+            task={task} 
+            key={task.id}
+            ></Todo>
+            ))}
+          </Grid>        
+        </Grid>
+
         </Grid>
       </Fragment>
     );
