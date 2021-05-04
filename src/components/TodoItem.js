@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Grid, Paper } from "@material-ui/core";
+import { Grid, Paper, Button } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import { Delete, Build } from "@material-ui/icons";
 import { useDispatch } from 'react-redux';
 import { deleteTodo } from "../redux/actions";
+import { editTodo } from '../redux/actions'
+
 import Input from "@material-ui/core/Input";
 
 const styles = {
@@ -33,17 +35,24 @@ const TodoItem = ({ todo }) => {
           {edit 
           ? <Input type='text' value={name} onChange={(e) => setName(e.target.value)} /> 
           : <span style={styles.Todo}>{todo.title}</span>
-          }
-          
+          } 
+            {/* <span>{todo.title}</span> */}
             <IconButton
               onClick={() => {
+                dispatch(editTodo({
+                    ...todo,
+                    title: name
+                }))
+                if (edit) {
+                 setName(todo.title);   
+                }
                 setEdit(!edit);
-              }}
+            }}
               color="primary"
               aria-label="Edit"
               style={styles.Icon}
             >
-              {edit ? <button variant="contained">Cancel</button> : <Build fontSize="small" />}
+              {edit ? <Button variant="contained">Update</Button> : <Build fontSize="small" />}
             </IconButton>
           
             <IconButton
@@ -60,6 +69,3 @@ const TodoItem = ({ todo }) => {
 }
 
 export default TodoItem;
-
-
-

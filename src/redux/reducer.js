@@ -2,12 +2,11 @@ import { ADD_TODO, DELETE_TODO, EDIT_TODO } from './actions';
 import { tasks } from './states';
 
 export const reducer = (state = tasks, action) => {
+    debugger
     let newTasks
     switch (action.type) {
         case ADD_TODO:
-            newTasks = [...state];
-            newTasks = newTasks.push(action.payload);
-            return newTasks;
+            return [...state, action.payload];
 
         case DELETE_TODO:
             newTasks = [...state];

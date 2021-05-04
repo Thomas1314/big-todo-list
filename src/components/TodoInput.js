@@ -7,14 +7,9 @@ import { useDispatch } from 'react-redux';
  const TodoInput = () => {
      const [name, setName] = useState();
      let dispatch = useDispatch();
-
-
+     //debugger;
      return (
-        <form className='todo_form' /* onSubmit={event => {
-            event.preventDefault();
-            addTodo(value);
-            setValue('');
-        }} */>
+        <form className='todo_form'>
             <Input
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -23,15 +18,16 @@ import { useDispatch } from 'react-redux';
             />
 
             <Button 
-            onClick={() => {
-                dispatch(addTodo(
-                    {
-                        id: 34,
-                        title: name                                                               
-                    }
-                ))
-                setName('');
-            }}
+             onClick={() => {
+                 dispatch(addTodo({
+                     id: 30,
+                     title: name,
+                     done: false
+                 }));
+                 setName('');
+                 
+                }}
+    
             type="submit"
             variant="contained"
             color="primary"

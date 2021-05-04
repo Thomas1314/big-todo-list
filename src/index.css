@@ -21,3 +21,7 @@
   background-color: #04395e3d;
   border-radius: 5px;
 }
+
+.todo_form {
+  display: flex;
+}

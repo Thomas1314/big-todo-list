@@ -1,29 +1,20 @@
 import React from "react";
-import Todo from "../components/Todo";
+import TodoItem from "../components/TodoItem";
 import { Grid } from "@material-ui/core";
+import { useSelector } from 'react-redux';
 
-class List extends React.Component {
-
-    render() {
-        const { tasks } = this.state;
-        const activeTasks = tasks.filter(task => !task.done);
-        const doneTask = tasks.filter(task => task.done);
-
-        return (
-            <Grid container>
-                {[...activeTasks, ...doneTask].map(task => (
-                <Todo                
-                doneTask={() => this.doneTask(task.id)}
-                returnToUnDoneTask={() => this.returnToUnDoneTask(task.id)}
-                deleteTask={() => this.deleteTask(task.id)}
-                task={task} 
-                key={task.id}
-                ></Todo>
-                ))}
-            </Grid>
-        )
-    }
+const List = () => {
+    let todos = useSelector(state => state);
+    debugger;
+    return (
+        <Grid container>
+            {todos.map((todo) => {
+                return <TodoItem key={todos.id} todo={todo} />
+            })}
+        </Grid>
+    )
 }
+
 
 export default List;
 
