@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Create todo-react-app",
+      "isDone": false,
+      "isEdit": false,
+      "date": "06.05.2021"
+    },
+    {
+      "id": 2,
+      "title": "Make a beat",
+      "isDone": false,
+      "isEdit": false,
+      "date": "06.05.2021"
+    },
+    {
+      "id": 3,
+      "title": "Create simple-react-app",
+      "isDone": false,
+      "isEdit": false,
+      "date": "06.05.2021"
+    },
+    {
+      "id": 4,
+      "title": " Wassup",
+      "isDone": false,
+      "isEdit": false,
+      "date": "06.05.2021"
+    },
+    {
+      "id": 5,
+      "title": "Wassup",
+      "isDone": false,
+      "isEdit": false,
+      "date": "06.05.2021"
+    }
+  ]
+}

@@ -1,9 +1,8 @@
-export const ADD_TODO = 'ADD_TODO';
-export const DELETE_TODO = 'DELETE_TODO';
-export const EDIT_TODO = 'EDIT_TODO';
+import { ADD_TODO, DELETE_TODO, EDIT_TODO } from './constants';
+import axios from 'axios';
 
 export function addTodo(todo) {
-    debugger
+    //debugger
     return {
         type: ADD_TODO,
         payload: todo
@@ -23,4 +22,5 @@ export function editTodo(todo) {
         payload: todo
     }
 }
+
 

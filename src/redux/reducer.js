@@ -1,8 +1,14 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO } from './actions';
-import { tasks } from './states';
+import { ADD_TODO, DELETE_TODO, EDIT_TODO } from './constants';
 
-export const reducer = (state = tasks, action) => {
-    debugger
+
+const initialState = {
+    tasks: [],
+    newTaskText: '',
+    isFetching: false
+}
+
+export const reducer = (state, action) => {
+    //debugger
     let newTasks
     switch (action.type) {
         case ADD_TODO:
@@ -14,7 +20,19 @@ export const reducer = (state = tasks, action) => {
             return newTasks;
 
         case EDIT_TODO:
-        break;
+            newTasks = [...state];
+            let index = -1;
+            for (let i = 0; i < newTasks.length; i++) {
+                index++;
+                if (newTasks[i].id === action.payload.id) {
+                    break;
+                }
+
+            }
+            if (index !== -1) {
+                newTasks[index] = action.payload;
+                return newTasks;
+            }
 
     }
     return state;

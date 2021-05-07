@@ -2,17 +2,32 @@ import React, { useState } from 'react';
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import { addTodo } from '../redux/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
  const TodoInput = () => {
-     const [name, setName] = useState();
+     const [value, setValue] = useState();
      let dispatch = useDispatch();
+
+     let todos = useSelector(state => state);
+
+     const inputChange = event => {
+        setValue(event.target.value);
+     }
+
+     const handleSubmit = event => {
+         event.preventDefault();
+         if (!value) return;
+         dispatch(addTodo(value))
+
+     }
+
+
      //debugger;
      return (
-        <form className='todo_form'>
+        <form onSubmit={handleSubmit} className='todo_form'>
             <Input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={value}
+            onChange={inputChange}
             placeholder='Todo'
             style={{ width: "90%" }}
             />
@@ -20,11 +35,11 @@ import { useDispatch } from 'react-redux';
             <Button 
              onClick={() => {
                  dispatch(addTodo({
-                     id: 30,
-                     title: name,
-                     done: false
+                    id: todos.length + 1,
+                    title: value,
+                    done: false
                  }));
-                 setName('');
+                 setValue('');
                  
                 }}
     

@@ -1,7 +1,0 @@
-{
-    "tasks": [
-        { "id": 0, "title": "Create todo-react-app", "done": false },
-        { "id": 1, "title": "Make a beat", "done": true },
-        { "id": 2, "title": "Create simple-react-app", "done": false }
-      ]
-}
