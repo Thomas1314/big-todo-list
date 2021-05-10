@@ -1,0 +1,1 @@
+export const getTasksFromState = (state) => state.tasks;

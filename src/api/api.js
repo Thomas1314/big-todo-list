@@ -1,25 +1,32 @@
 import axios from 'axios';
 
-
 const instance = axios.create({
     withCredentials: true,
-    baseURL: process.env.REACT_APP_URL
+    baseURL: 'http://localhost:3000/tasks'   /* `${process.env.REACT_APP_URL}` */
 })
 
-const limit = process.env.REACT_TASKS_LIMIT
+
+/* const limit = process.env.REACT_TASKS_LIMIT */
+
 
 export const API = {
       getTasks: () => {
-          instance
+        instance
           .get()
-          .then((response) => response.data)
+            .then((response) => response.data)
       },
 
       deleteTask(id) {
         return instance.delete(`/tasks/${id}`);
       },
 
-      addTask: () => {
-        instance.post(`/tasks/`)
+      addTask: (title, done, editHandler) => {
+        return instance.post(`/tasks/`, {
+          title,
+          done,
+          editHandler
+        })
       }
 }
+
+export default API;

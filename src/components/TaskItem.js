@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Grid, Paper, Button } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import { Delete, Build } from "@material-ui/icons";
-import { useDispatch } from 'react-redux';
-import { deleteTodo } from "../redux/actions";
-import { editTodo } from '../redux/actions'
+import { Input } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { actions, deleteTask } from "../redux/actions";
 
-import Input from "@material-ui/core/Input";
+
+
 
 const styles = {
     Icon: {
@@ -24,29 +25,31 @@ const styles = {
 
 
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ task, categories, isListDone }) => {
   const [edit, setEdit] = useState(false);
-  const [name, setName] = useState(todo.title);
-  let dispatch = useDispatch();
+  const [name, setName] = useState(task.title);
+
+  const dispatch = useDispatch();
+
+  
 
     return (
         <Grid item xs={12}>
         <Paper elevation={2} style={styles.Paper}>
           {edit 
           ? <Input type='text' value={name} onChange={(e) => setName(e.target.value)} /> 
-          : <span style={styles.Todo}>{todo.title}</span>
+          : <span style={styles.Todo}>{task.title}</span>
           } 
-            {/* <span>{todo.title}</span> */}
             <IconButton
               onClick={() => {
-                dispatch(editTodo({
+                /* dispatch(editTodo({
                     ...todo,
                     title: name
                 }))
                 if (edit) {
                  setName(todo.title);   
                 }
-                setEdit(!edit);
+                setEdit(!edit); */
             }}
               color="primary"
               aria-label="Edit"
@@ -58,7 +61,7 @@ const TodoItem = ({ todo }) => {
             <IconButton
               color="secondary"
               aria-label="Delete"
-              onClick={() => dispatch(deleteTodo(todo.id))}
+              /* onClick={() => dispatch(deleteTodo(todo.id))} */
             >
               <Delete fontSize="small" />
             </IconButton>

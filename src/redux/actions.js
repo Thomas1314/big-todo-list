@@ -1,26 +1,28 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO } from './constants';
-import axios from 'axios';
+import { SET_TASKS, 
+    ADD_TASK, 
+    DELETE_TASK, 
+    EDIT_TASK_TEXT,
+    TOGGLE_IS_FETCHING
+ } from './types';
+import API from '../api/api';
 
-export function addTodo(todo) {
-    //debugger
-    return {
-        type: ADD_TODO,
-        payload: todo
-    }
+
+export const actions = {
+    setTasks: (tasks) => ({ type: SET_TASKS, tasks }),
+    toggleIsFetching: (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching }),
+    deleteTask: (id) => ({ type: DELETE_TASK, id })
 }
 
-export function deleteTodo(id) {
-    return {
-        type: DELETE_TODO,
-        payload: id
-    }
+
+export const getTasks = (params) => async (dispatch) => {
+    dispatch(actions.toggleIsFetching(true));
+    const res = await API.getTasks(params);
+    dispatch(actions.setTasks(res));
 }
 
-export function editTodo(todo) {
-    return {
-        type: EDIT_TODO,
-        payload: todo
-    }
-}
+
+
+
+
 
 

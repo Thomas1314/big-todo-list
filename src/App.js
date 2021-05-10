@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import TodoInput from './components/TodoInput';
+import TaskInput from './components/TaskInput';
 import List from './components/List';
 import { Paper, Grid } from "@material-ui/core";
 
@@ -20,7 +20,7 @@ const App = () => {
       <Grid container spacing={0}>
           <Grid item xs={12}>
             <Paper style={styles.Paper}>
-              <TodoInput />
+              <TaskInput />
             </Paper>
           </Grid>
 

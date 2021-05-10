@@ -14,17 +14,15 @@ import { useDispatch, useSelector } from 'react-redux';
         setValue(event.target.value);
      }
 
-     const handleSubmit = event => {
+    /*  const handleSubmit = event => {
          event.preventDefault();
          if (!value) return;
          dispatch(addTodo(value))
+     } */
 
-     }
 
-
-     //debugger;
      return (
-        <form onSubmit={handleSubmit} className='todo_form'>
+        <form /* onSubmit={handleSubmit} */ className='todo_form'>
             <Input
             value={value}
             onChange={inputChange}
@@ -33,16 +31,6 @@ import { useDispatch, useSelector } from 'react-redux';
             />
 
             <Button 
-             onClick={() => {
-                 dispatch(addTodo({
-                    id: todos.length + 1,
-                    title: value,
-                    done: false
-                 }));
-                 setValue('');
-                 
-                }}
-    
             type="submit"
             variant="contained"
             color="primary"
