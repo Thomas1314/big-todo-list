@@ -5,14 +5,10 @@ const instance = axios.create({
     baseURL: 'http://localhost:3000/tasks'   /* `${process.env.REACT_APP_URL}` */
 })
 
-
-/* const limit = process.env.REACT_TASKS_LIMIT */
-
-
 export const API = {
       getTasks: () => {
         instance
-          .get()
+          .get(`/tasks`)
             .then((response) => response.data)
       },
 
@@ -20,11 +16,11 @@ export const API = {
         return instance.delete(`/tasks/${id}`);
       },
 
-      addTask: (title, done, editHandler) => {
+      addTask: (title, isDone, isEdit) => {
         return instance.post(`/tasks/`, {
           title,
-          done,
-          editHandler
+          isDone,
+          isEdit
         })
       }
 }
