@@ -18,7 +18,7 @@ import { getNewTaskText } from '../redux/selectors/selectors';
 
      //debugger;
      return (
-        <div /* onSubmit={handleSubmit} */ className='todo_form'>
+        <div className='todo_form'>
             <Input
             value={newTaskText}
             onChange={inputChange}
@@ -31,15 +31,11 @@ import { getNewTaskText } from '../redux/selectors/selectors';
             variant="contained"
             color="primary"
             style={{ width: "10%" }}
-            onClick={() => {
-                //debugger
-                dispatch(addTask({
-                    title: newTaskText,
-                    isDone: false,
-                    isEdit: false
-                }))}
-            }
-    
+            onClick={() => dispatch(addTask({
+                title: newTaskText,
+                isDone: false,
+                isEdit: false
+            }))}
             >
                 Add
             </Button>

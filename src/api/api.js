@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'http://localhost:3000/tasks'   /* `${process.env.REACT_APP_URL}` */
+    baseURL: 'http://localhost:3000/'   /* `${process.env.REACT_APP_URL}` */
 })
 
 export const API = {

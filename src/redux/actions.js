@@ -20,9 +20,8 @@ export const deleteTask = (id) => async (dispatch) => {
     dispatch(actions.deleteTaskAC(id));
 }
 
-export const addTask = (title, isDone, isEdit) => async (dispatch) => {
-    debugger;
-    const response = await API.addTask(title, isDone, isEdit);
+export const addTask = (params) => async (dispatch) => {
+    const response = await API.addTask(params);
     dispatch(actions.addNewTask(response.data));
 }
 
