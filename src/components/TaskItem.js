@@ -74,7 +74,7 @@ const TaskItem = ({ task, categories, isListDone }) => {
     return (
     <Grid item xs={12}>
       <Paper elevation={2} style={styles.Paper}>
-        <Checkbox onClick={updateCategoryHandler} /* checked={task.isDone} */ />
+        <Checkbox onClick={updateCategoryHandler} />
         {task.isEdit 
         ? <Input type='text' value={changedTaskText} onChange={(inputTextChanger)} /> 
         : <span style={styles.Todo}>{task.title}</span>

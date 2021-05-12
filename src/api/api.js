@@ -26,8 +26,8 @@ export const API = {
         return data;
       },
       
-      updateDoneHandler: (id, isDone ) => {
-         instance.patch(`/tasks/${id}`, { isDone: isDone });
+      updateDoneHandler: (updateDone) => {
+         instance.patch(`/tasks/${updateDone.id}`, { isDone: updateDone.isDone });
       }
 }
 

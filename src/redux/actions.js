@@ -44,9 +44,9 @@ export const updateTaskText = (title, id) => async (dispatch) => {
     dispatch(actions.editTaskText(title, id));
 }
 
-export const updateDoneHandler = (id, isListDone) => async (dispatch) => {
-    await API.updateDoneHandler(id, isListDone);
-    dispatch(actions.changeTaskStatus(id, isListDone))
+export const updateDoneHandler = (updateDone) => async (dispatch) => {
+    await API.updateDoneHandler(updateDone);
+    dispatch(actions.changeTaskStatus(updateDone.id, updateDone.isListDone));
 }
 
 
