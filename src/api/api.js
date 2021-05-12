@@ -6,9 +6,9 @@ const instance = axios.create({
 })
 
 export const API = {
-      getTasks: () => {
+      getTasks: (url) => {
         instance
-          .get(`/tasks`)
+          .get(`${url}`)
             .then((response) => response.data)
       },
 
@@ -16,12 +16,18 @@ export const API = {
         return instance.delete(`/tasks/${id}`);
       },
 
-      addTask: (title, isDone, isEdit) => {
-        return instance.post(`/tasks/`, {
-          title,
-          isDone,
-          isEdit
-        })
+      addTask: (itemToAdd) => {
+        return instance.post(`/tasks/`, itemToAdd)
+      },
+
+      updateTask: (id, title) => {
+        const response = instance.patch(`/tasks/${id}`, { title: title });
+        const { data } = response;
+        return data;
+      },
+      
+      updateDoneHandler: (id, isDone ) => {
+         instance.patch(`/tasks/${id}`, { isDone: isDone });
       }
 }
 
