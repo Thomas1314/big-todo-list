@@ -8,7 +8,7 @@ const initialState = {
     editStatus: false,
     isEditStatus: false,
     categories: [],
-    categoiyID: null,
+    categoryID: null,
     categoriesName: ""
 }
 
@@ -19,6 +19,12 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: action.tasks
+            }
+
+        case 'SET_CATEGORY':
+            return {
+                ...state,
+                categoiyID: action.id
             }
 
         case 'DELETE_TASK':
@@ -79,6 +85,30 @@ export const reducer = (state = initialState, action) => {
                 ),
 
                 changedTaskText: state.tasks.filter((task) => task.id === action.id) 
+            }
+        }
+
+        case 'CHANGE_FAVORITE_STATUS': {
+            return {
+                ...state,
+                tasks: state.tasks.map((task) => task.id === action.id
+                ? { ...task, isFavorite: !task.isFavorite }
+                : task
+                ).sort((a) => a.isFavorite ? -1 : 1)
+            };
+        }
+
+        case 'SET_UNIC_CATEGORIES': {
+            return {
+                ...state,
+                categories: action.categories
+            }
+        }
+
+        case 'TOGGLE_IS_FETCHING': {
+            return {
+                ...state,
+                isFetching: action.isFetching
             }
         }
 

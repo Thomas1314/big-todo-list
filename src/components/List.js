@@ -4,8 +4,8 @@ import TaskItem from "../components/TaskItem";
 import { useSelector } from 'react-redux';
 import ListHook from '../hooks/ListHook';
 
-const List = () => {
-    const { tasks, categories, isListDone } = ListHook();
+const List = ({ isListDone }) => {
+    const { tasks, categories } = ListHook();
 
     debugger;
     return (

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Grid, Paper, Button, TextField } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
+import Icon from '@material-ui/core/Icon';
 import { Delete, Build } from "@material-ui/icons";
 import { Input } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions,
          deleteTask,
          updateDoneHandler,
-         updateTaskText 
+         updateTaskText,
+         updateFavoriteHandler 
 } from "../redux/actions";
 import { getChangedTaskText, getIsEditStatus } from '../redux/selectors/selectors';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -28,8 +30,7 @@ const styles = {
 
 
 const TaskItem = ({ task, categories, isListDone }) => {
-/*const [edit, setEdit] = useState(false);
-  const [name, setName] = useState(task.title); */
+
 
   const dispatch = useDispatch();
 
@@ -63,6 +64,15 @@ const TaskItem = ({ task, categories, isListDone }) => {
     dispatch(updateDoneHandler(updateDone));
   }
 
+  const updateFavoriteParams = {
+    isFavorite: !task.isFavorite,
+    id: task.id
+  }
+
+  const updateTaskFavorite = () => {
+    dispatch(updateFavoriteHandler(updateFavoriteParams))
+  }
+
   const inputTextChanger = event => {
   const { value } = event.target;
   const text = value;
@@ -70,43 +80,35 @@ const TaskItem = ({ task, categories, isListDone }) => {
   }
 
   const deleteChosenTask = () => dispatch(deleteTask(task.id));
-    
+
+  const enterHandler = (event) => editHandleEnter(event, updateTaskParams);
+    debugger
     return (
     <Grid item xs={12}>
       <Paper elevation={2} style={styles.Paper}>
-        <Checkbox onClick={updateCategoryHandler} />
-        {task.isEdit 
-        ? <Input type='text' value={changedTaskText} onChange={(inputTextChanger)} /> 
-        : <span style={styles.Todo}>{task.title}</span>
-        }
         
-           <IconButton
-            /* onClick={() => {
-                dispatch(editTodo({
-                  ...todo,
-                  title: name
-              }))
-              if (edit) {
-               setName(todo.title);   
-              }
-              setEdit(!edit);
-            */            
-            color="primary"
-            aria-label="Edit"
-            style={styles.Icon}
-            >
-            {/* {task.isEdit
+        <Checkbox onClick={updateCategoryHandler} />
+        {task.isEdit
                 ? <TextField
                   value={changedTaskText}
                   onChange={inputTextChanger}
                   key={task.id + 1}
+                  onKeyPress={enterHandler}
                   />
                 : isEditStatus
                   ? (<span>{task.title}</span>)
                   : (<span onClick={changeTaskHandler}>{task.title}</span>) 
-            } */}
-            {task.isEdit ? <Button variant="contained">Update</Button> : <Build fontSize="small" />}
-            {/* <Build fontSize="small" /> */}
+            }
+          <IconButton
+            color="primary"
+            aria-label="Edit"
+            style={styles.Icon}
+            >
+             {/* <Build fontSize="small" /> */}
+          </IconButton>
+
+          <IconButton className='material-icons' onClick={updateTaskFavorite}>
+            {task.isFavorite ? "star" : "star_border" }
           </IconButton>
         
           <IconButton

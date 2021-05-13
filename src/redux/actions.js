@@ -4,6 +4,8 @@ import API from '../api/api';
 export const actions = {
     setTasks: (tasks) => ({ type: 'SET_TASKS', tasks }),
 
+    setCategory: (id) => ({ type: 'SET_CATEGORY', id }),
+
     changeHandler: (id) => ({ type: 'CHANGE_HANDLER', id }),
 
     toggleIsFetching: (isFetching) => ({ type: 'TOGGLE_IS_FETCHING', isFetching }),
@@ -18,9 +20,14 @@ export const actions = {
 
     updateIsEditStatus: () => ({ type: 'UPDATE_IS_EDIT'}),
 
-    editTaskText: (id) => ({ type: 'EDIT_TASK_TEXT', id }),
+    editTaskText: (updateTaskParams) => ({ type: 'EDIT_TASK_TEXT', updateTaskParams }),
 
-    changeTaskStatus: (id, isListDone) => ({ type: 'CHANGE_TASK_STATUS', id, isListDone})
+    changeTaskStatus: (id, isListDone) => ({ type: 'CHANGE_TASK_STATUS', id, isListDone }),
+
+    changeFavoriteStatus: (id) => ({ type: 'CHANGE_FAVORITE_STATUS', id }),
+
+    setUnicCategories: (categories) => ({ type: 'SET_UNIC_CATEGORIES', categories })
+
 }
 
 
@@ -34,19 +41,34 @@ export const deleteTask = (id) => async (dispatch) => {
     dispatch(actions.deleteTaskAC(id));
 }
 
-export const addTask = (itemToAdd) => async (dispatch) => {
-    const response = await API.addTask(itemToAdd);
+export const addTask = (newTaskParams) => async (dispatch) => {
+    const response = await API.addTask(newTaskParams);
     dispatch(actions.addNewTask(response.data));
 }
 
-export const updateTaskText = (title, id) => async (dispatch) => {
-    await API.updateTask(title, id);
-    dispatch(actions.editTaskText(title, id));
+export const updateTaskText = (updateTaskParams) => async (dispatch) => {
+    await API.updateTask(updateTaskParams);
+    dispatch(actions.editTaskText(updateTaskParams));
 }
 
 export const updateDoneHandler = (updateDone) => async (dispatch) => {
     await API.updateDoneHandler(updateDone);
     dispatch(actions.changeTaskStatus(updateDone.id, updateDone.isListDone));
+}
+
+export const getCategories = () => async (dispatch) => {
+    const response = await API.getCategories();
+    dispatch(actions.setUnicCategories);
+}
+
+export const getDefaultCategory = () => async (dispatch) => {
+    const response = await API.getDefaultCategory();
+    dispatch(actions.setCategory(response));
+}
+
+export const updateFavoriteHandler = (updateFavoriteParams) => async (dispatch) => {
+    await API.updateFavoriteHandler(updateFavoriteParams);
+    dispatch(actions.changeFavoriteStatus(updateFavoriteParams.id));
 }
 
 

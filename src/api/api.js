@@ -2,8 +2,9 @@ import axios from 'axios';
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'http://localhost:3000/'   /* `${process.env.REACT_APP_URL}` */
+    baseURL: 'http://localhost:3000/'  
 })
+
 
 export const API = {
       getTasks: (url) => {
@@ -16,18 +17,36 @@ export const API = {
         return instance.delete(`/tasks/${id}`);
       },
 
-      addTask: (itemToAdd) => {
-        return instance.post(`/tasks/`, itemToAdd)
+      addTask: (newTaskParams) => {
+        return instance.post(`/tasks/`, newTaskParams)
       },
 
-      updateTask: (id, title) => {
-        const response = instance.patch(`/tasks/${id}`, { title: title });
-        const { data } = response;
-        return data;
+      updateTask: (updateTaskParams) => {
+        /* const response = */ instance.patch(`/tasks/${updateTaskParams.id}`, { title: updateTaskParams.title });
+        /* const { data } = response;
+        return data; */
       },
       
       updateDoneHandler: (updateDone) => {
          instance.patch(`/tasks/${updateDone.id}`, { isDone: updateDone.isDone });
+      },
+
+      getCategories: () => {
+        instance.get("/categories")
+        .then((response) => response.data.id);
+      },
+
+      getDefaultCategory: () => {
+        instance.get("/defaultCategories")
+        .then((response) => response.data.id);
+      },
+
+      deleteCategory: (id) => {
+        instance.delete(`/defaultCategory`, { id });
+      },
+
+      updateFavoriteHandler: (updateFavoriteParams) => {
+        instance.patch(`/tasks/${updateFavoriteParams.id}`, { isFavorite: updateFavoriteParams.isFavorite});
       }
 }
 

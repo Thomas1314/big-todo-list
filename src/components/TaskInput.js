@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
+import MenuItem from '@material-ui/core/MenuItem';
 import { addTask, actions } from '../redux/actions';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ListHook from '../hooks/ListHook';
-import { getNewTaskText } from '../redux/selectors/selectors';
+import { getCategoriesFromState, getNewTaskText, selectDefaultCategoryID } from '../redux/selectors/selectors';
 import { Select } from '@material-ui/core';
-import API from '../api/api';
+import { Icon } from '../components/Icon/icon';
+
+
+
 
  const TaskInput = () => {
+    
+    const newTaskText = useSelector(getNewTaskText);
+     const categories = useSelector(getCategoriesFromState);
+     const categoryID = useSelector(selectDefaultCategoryID);
      const [open, setOpen] = useState(false);
-     const [input, setInput] = useState('');
-     const newTaskText = useSelector(getNewTaskText);
-     const { dispatch } = ListHook();
+     const [category, setCategory] = useState(categoryID);
+     const [taskDate, setTaskDate] = useState(new Date(Date.now()));
+     const dispatch = useDispatch();
+
+     useEffect(() => {
+         setCategory(categoryID);
+     }, [categoryID]); 
 
      const onOpen = () => {
          setOpen(true);
@@ -22,23 +34,29 @@ import API from '../api/api';
          setOpen(false);
      }
 
-      /* const addTodo = async (e) => {
-          e.preventDefault();                  
-          if (input) {
-              const todoToAdd = {
-                  title: `${input}`,
-                  isDone: false,
-                  isEdit: false                                                                                                                                 
-              };
-              await API.addTask('task', itemToAdd);
-              const response = await API.getTasks()
-          }
-      } */
+     const newTaskParams = {
+         title: newTaskText,
+         isDone: false,
+         isEdit: false,
+         categoryID: categoryID,
+         isFavorite: false,
+         date: taskDate.valueOf()
+     }
+                   
+     const addHandleEnter = (event) => {
+         if (event.key === 'Enter') {
+             dispatch(addTask(newTaskParams)                                                                                         )
+         }
+     }
 
      const inputChange = event => {
         const { value } = event.target;
         const text = value;
         dispatch(actions.updateNewMessageText(text));
+     }
+
+     const handleChangeCategory = (event) => {
+         dispatch(actions.setCategory(event.target.value));
      }
 
      //debugger;
@@ -47,12 +65,22 @@ import API from '../api/api';
             <Input
             value={newTaskText}
             onChange={inputChange}
+            onKeyPress={addHandleEnter}
             placeholder='Todo'
             style={{ width: "90%" }}
             />
             <Select onOpen={onOpen}
                     onClose={onClose}
             >
+                {
+                    categories.map(({ id, color, icon, name}) => (
+                        <MenuItem key={id} value={id}>
+                            <>
+                                  <Icon color={color} icon={icon} />
+                            </>
+                        </MenuItem>
+                    ))
+                }
 
             </Select>
 
@@ -61,11 +89,7 @@ import API from '../api/api';
             variant="contained"
             color="primary"
             style={{ width: "10%" }}
-            onClick={() => dispatch(addTask({
-                title: newTaskText,
-                isDone: false,
-                isEdit: false,
-            }))}
+            onClick={() => dispatch(addTask(newTaskParams))}
             >
                 Add
             </Button>
