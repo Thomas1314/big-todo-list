@@ -86,7 +86,7 @@ const TaskItem = ({ task, categories, isListDone }) => {
     return (
     <Grid item xs={12}>
       <Paper elevation={2} style={styles.Paper}>
-        
+
         <Checkbox onClick={updateCategoryHandler} />
         {task.isEdit
                 ? <TextField
