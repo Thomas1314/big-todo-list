@@ -25,3 +25,24 @@
 .todo_form {
   display: flex;
 }
+
+/* app.css */
+
+.navbar {
+  align-items: center;
+  display: flex;
+}
+
+.navbar_container {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navLinks {
+  color: black;
+  text-decoration: none;
+  font-family: "Roboto";
+  text-transform: uppercase;
+}
+

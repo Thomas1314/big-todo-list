@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Grid, Paper, Button, TextField } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import Icon from '@material-ui/core/Icon';
-import { Delete, Build } from "@material-ui/icons";
+import { Delete, Build, Star } from "@material-ui/icons";
 import { Input } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions,
@@ -10,9 +10,12 @@ import { actions,
          updateDoneHandler,
          updateTaskText,
          updateFavoriteHandler 
-} from "../redux/actions";
-import { getChangedTaskText, getIsEditStatus } from '../redux/selectors/selectors';
+} from "../../redux/actions";
+import { getChangedTaskText, getIsEditStatus } from '../../redux/selectors/selectors';
 import Checkbox from '@material-ui/core/Checkbox';
+import { StyledButton } from './taskButton';
+import StarIcon from '@material-ui/icons/Star';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 const styles = {
     Icon: {
@@ -107,9 +110,9 @@ const TaskItem = ({ task, categories, isListDone }) => {
              {/* <Build fontSize="small" /> */}
           </IconButton>
 
-          <IconButton className='material-icons' onClick={updateTaskFavorite}>
-            {task.isFavorite ? "star" : "star_border" }
-          </IconButton>
+          <StyledButton className="material-icons" onClick={updateTaskFavorite}>
+            {task.isFavorite ?  <StarIcon /> : <StarBorderIcon /> }
+          </StyledButton>
         
           <IconButton
             color="secondary"

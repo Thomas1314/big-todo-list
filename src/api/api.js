@@ -31,22 +31,30 @@ export const API = {
          instance.patch(`/tasks/${updateDone.id}`, { isDone: updateDone.isDone });
       },
 
+      updateFavoriteHandler: (updateFavoriteParams) => {
+        instance.patch(`/tasks/${updateFavoriteParams.id}`, { isFavorite: updateFavoriteParams.isFavorite});
+      },
+
       getCategories: () => {
-        instance.get("/categories")
+        instance.get(`/categories`)
         .then((response) => response.data.id);
       },
 
       getDefaultCategory: () => {
-        instance.get("/defaultCategories")
+        instance.get(`/defaultCategory`)
         .then((response) => response.data.id);
       },
 
       deleteCategory: (id) => {
-        instance.delete(`/defaultCategory`, { id });
+        instance.delete(`/categories/${id}`);
       },
 
-      updateFavoriteHandler: (updateFavoriteParams) => {
-        instance.patch(`/tasks/${updateFavoriteParams.id}`, { isFavorite: updateFavoriteParams.isFavorite});
+      updateCategory: ({ id, icon, color}) => {
+        instance.patch(`/categories/${id}`, { icon: icon, color: color });
+      },
+
+      updateDefaultCategory: (id) => {
+        instance.put(`/defaultCategory`, { id });
       }
 }
 

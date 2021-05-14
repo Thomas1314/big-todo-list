@@ -44,7 +44,7 @@ import { Icon } from '../components/Icon/icon';
      }
                    
      const addHandleEnter = (event) => {
-         if (event.key === 'Enter') {
+         if (newTaskText && newTaskText.length < 30 && event.key === 'Enter') {
              dispatch(addTask(newTaskParams)                                                                                         )
          }
      }
@@ -69,27 +69,34 @@ import { Icon } from '../components/Icon/icon';
             placeholder='Todo'
             style={{ width: "90%" }}
             />
+        {/* { category !== null ? */}
             <Select onOpen={onOpen}
                     onClose={onClose}
+                    onChange={handleChangeCategory}
+                    value={category}
             >
-                {
-                    categories.map(({ id, color, icon, name}) => (
-                        <MenuItem key={id} value={id}>
-                            <>
-                                  <Icon color={color} icon={icon} />
-                            </>
-                        </MenuItem>
-                    ))
-                }
-
-            </Select>
+                    {
+                        categories.map(({ id, color, icon, name}) => (
+                            <MenuItem key={id} value={id}>
+                                <>
+                                    <Icon color={color} icon={icon} />
+                                    {open && name}
+                                </>
+    
+                            </MenuItem>
+                        ))
+                    }
+            </Select> {/* : null } */}
 
             <Button 
             type="submit"
+            disabled={newTaskText.length === 0 || newTaskText.length > 30}
             variant="contained"
             color="primary"
             style={{ width: "10%" }}
-            onClick={() => dispatch(addTask(newTaskParams))}
+            onClick={() => {
+                newTaskText && newTaskText.length < 30 && dispatch(addTask(newTaskParams));
+            }}
             >
                 Add
             </Button>

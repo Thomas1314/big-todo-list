@@ -105,6 +105,16 @@ export const reducer = (state = initialState, action) => {
             }
         }
 
+        case 'CHANGE_TASK_STATUS': {
+            return {
+                ...state,
+                tasks: state.tasks.map((task) => task.id === action.id 
+                ? {...task, isDone: !task.isDone }
+                : task
+                ).filter(task => task.isDone === action.isListDone)
+            };
+        }
+
         case 'TOGGLE_IS_FETCHING': {
             return {
                 ...state,

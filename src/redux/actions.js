@@ -26,7 +26,9 @@ export const actions = {
 
     changeFavoriteStatus: (id) => ({ type: 'CHANGE_FAVORITE_STATUS', id }),
 
-    setUnicCategories: (categories) => ({ type: 'SET_UNIC_CATEGORIES', categories })
+    setUnicCategories: (categories) => ({ type: 'SET_UNIC_CATEGORIES', categories }),
+
+    editCategoryIcon: (updateCategoryParams) => ({ type: 'EDIT_CATEGORY_ICON', updateCategoryParams })
 
 }
 
@@ -69,6 +71,11 @@ export const getDefaultCategory = () => async (dispatch) => {
 export const updateFavoriteHandler = (updateFavoriteParams) => async (dispatch) => {
     await API.updateFavoriteHandler(updateFavoriteParams);
     dispatch(actions.changeFavoriteStatus(updateFavoriteParams.id));
+}
+
+export const updateCategory = (updateCategoryParams) => async (dispatch) => {
+    await API.updateCategory(updateCategoryParams);
+    dispatch(actions.editCategoryIcon(updateCategory));
 }
 
 

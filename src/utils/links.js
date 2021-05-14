@@ -1,7 +1,7 @@
-const NavLinks = [
+const navLinks = [
     {
         to: "/todo",
-        title: "Tasks Lists",
+        title: "Main",
     },
     {
         to: "/doneTasks",
