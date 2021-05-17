@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import MenuItem from '@material-ui/core/MenuItem';
-import { addTask, actions } from '../redux/actions';
+import { addTask, actions } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import ListHook from '../hooks/ListHook';
-import { getCategoriesFromState, getNewTaskText, selectDefaultCategoryID } from '../redux/selectors/selectors';
+import ListHook from '../../hooks/ListHook';
+import { getCategoriesFromState, getNewTaskText, selectDefaultCategoryID } from '../../redux/selectors/selectors';
 import { Select } from '@material-ui/core';
-import { Icon } from '../components/Icon/icon';
+import { Icon } from '../Icon/icon';
 
 
 
@@ -69,13 +69,13 @@ import { Icon } from '../components/Icon/icon';
             placeholder='Todo'
             style={{ width: "90%" }}
             />
-        {/* { category !== null ? */}
+        
             <Select onOpen={onOpen}
                     onClose={onClose}
                     onChange={handleChangeCategory}
                     value={category}
             >
-                    {
+                    {/* {
                         categories.map(({ id, color, icon, name}) => (
                             <MenuItem key={id} value={id}>
                                 <>
@@ -85,8 +85,8 @@ import { Icon } from '../components/Icon/icon';
     
                             </MenuItem>
                         ))
-                    }
-            </Select> {/* : null } */}
+                    } */}
+            </Select>
 
             <Button 
             type="submit"
@@ -95,7 +95,7 @@ import { Icon } from '../components/Icon/icon';
             color="primary"
             style={{ width: "10%" }}
             onClick={() => {
-                newTaskText && newTaskText.length < 30 && dispatch(addTask(newTaskParams));
+                newTaskText && newTaskText.length < 10 && dispatch(addTask(newTaskParams));
             }}
             >
                 Add

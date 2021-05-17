@@ -22,17 +22,11 @@ export const API = {
       },
 
       updateTask: (updateTaskParams) => {
-        /* const response = */ instance.patch(`/tasks/${updateTaskParams.id}`, { title: updateTaskParams.title });
-        /* const { data } = response;
-        return data; */
-      },
-      
-      updateDoneHandler: (updateDone) => {
-         instance.patch(`/tasks/${updateDone.id}`, { isDone: updateDone.isDone });
-      },
-
-      updateFavoriteHandler: (updateFavoriteParams) => {
-        instance.patch(`/tasks/${updateFavoriteParams.id}`, { isFavorite: updateFavoriteParams.isFavorite});
+        instance.patch(`/tasks/${updateTaskParams.id}`, {
+          title: updateTaskParams.title,
+          isDone: updateTaskParams.isDone,
+          isFavorite: updateTaskParams.isFavorite          
+        });
       },
 
       getCategories: () => {

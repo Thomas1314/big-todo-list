@@ -5,7 +5,8 @@ export const StyledButton = withStyles({
     root: {
         padding: '0',
         minWidth: '5px',
-        color: 'black'
+        color: 'black',
+        marginLeft: 'auto'
         },
     }
 )(IconButton);

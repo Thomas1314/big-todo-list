@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 /* import LocalizationProvider from '@material-ui/lab/LocalizationProvider'; */
-import List from '../../components/List';
+import List from '../../components/List/List';
 
 const CompletedTasks = () => {
     return (
@@ -12,15 +12,22 @@ const CompletedTasks = () => {
                     <MuiPickersUtilsProvider>
                         <KeyboardDatePicker
                             margin="normal"
-                            format="yyyy-MM-dd" 
+                            format="yyyy-MM-dd"
+                            variant="inline"
+                            KeyboardButtonProps ={{ "aria-label" : "change date" }}
                         />
                     </MuiPickersUtilsProvider>
 
                     <MuiPickersUtilsProvider>
-                        <KeyboardDatePicker />
+                        <KeyboardDatePicker
+                            margin="normal"
+                            format="yyyy-MM-dd"
+                            variant="inline"
+                            KeyboardButtonProps ={{ "aria-label" : "change date" }}
+                        />
                     </MuiPickersUtilsProvider>
                 </div>
-                <List />
+                <List isListDone />
             </div>
         </div>
     )

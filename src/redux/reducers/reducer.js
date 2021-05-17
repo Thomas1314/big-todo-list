@@ -1,6 +1,8 @@
 
 const initialState = {
-    tasks: [],
+    doneTasks: [],
+    unDoneTasks: [],
+    /* tasks: [], */
     newTaskText: "",
     changedTaskText: "",
     isFetching: false,
@@ -18,26 +20,31 @@ export const reducer = (state = initialState, action) => {
         case 'SET_TASKS':
             return {
                 ...state,
-                tasks: action.tasks
+                doneTasks: action.tasks
             }
 
-        case 'SET_CATEGORY':
+        /* case 'SET_CATEGORY':
             return {
                 ...state,
                 categoiyID: action.id
-            }
+            } */
 
         case 'DELETE_TASK':
             return {
                 ...state,
-                tasks: [...state.tasks.filter((task) => task.id !== action.id)]
+                doneTasks: [...state.doneTasks.filter((task) => task.id !== action.id)],
+                unDoneTasks: [...state.unDoneTasks.filter((task) => task.id !== action.id)]
             }
 
         case 'ADD_NEW_TASK': {
             return {
                 ...state,
-                tasks: [...state.tasks, action.task],
+                unDoneTasks: [...state.unDoneTasks, action.task],
                 newTaskText: ""
+
+                /* ...state,
+                tasks: [...state.tasks, action.task],
+                newTaskText: "" */
             }
         }
 
@@ -55,21 +62,14 @@ export const reducer = (state = initialState, action) => {
             }
         }
 
-        case 'UPDATE_IS_EDIT': {
-            return {
-                ...state,
-                isEditStatus: !state.isEditStatus
-            }
-        }
-
         case 'EDIT_TASK_TEXT': {
             return {
                 ...state,
-                tasks: state.tasks.map((task) =>
-                    task.id === action.id
+                unDoneTasks: state.unDoneTasks.map((task) =>
+                    task.id === action.updateTaskParams.id
                         ? {
                             ...task,
-                            title: action.title,
+                            title: action.updateTaskParams.title,
                             isEdit: !task.isEdit
                           }
                         : task 
@@ -80,38 +80,51 @@ export const reducer = (state = initialState, action) => {
         case 'CHANGE_HANDLER': {
             return {
                 ...state,
-                tasks: state.tasks.map((task) =>
-                    task.id === action.id ? { ...task, isEdit: !task.isEdit } : task
+                unDoneTasks: state.unDoneTasks.map((task) =>
+                    task.id === action.id ? { ...task, isEdit: !task.isEdit } : { ...task, isEdit: false }
                 ),
 
-                changedTaskText: state.tasks.filter((task) => task.id === action.id) 
+                changedTaskText: state.unDoneTasks.find((task) => task.id === action.id)
+                    .title 
+            }
+        }
+
+        /* case 'SET_UNIC_CATEGORIES': {
+            return {
+                ...state,
+                categories: action.categories
+            }
+        } */
+
+        case 'CHANGE_TASK_STATUS': {
+            return action.isListDone ? 
+            {
+                ...state,
+                doneTasks: state.doneTasks.map((task) =>
+                task.id === action.id ? { ...task, isDone: !task.isDone } : task
+                )
+            } 
+            : 
+            {
+                ...state,
+                unDoneTasks: state.unDoneTasks.map((task) =>
+                task.id === action.id ? { ...task, isDone: !task.isDone } : task
+                )
             }
         }
 
         case 'CHANGE_FAVORITE_STATUS': {
             return {
                 ...state,
-                tasks: state.tasks.map((task) => task.id === action.id
-                ? { ...task, isFavorite: !task.isFavorite }
-                : task
-                ).sort((a) => a.isFavorite ? -1 : 1)
-            };
-        }
+                doneTasks: state.doneTasks.map((task) => task.id === action.id
+                    ? { ...task, isFavorite: !task.isFavorite }
+                    : task
+                ),
 
-        case 'SET_UNIC_CATEGORIES': {
-            return {
-                ...state,
-                categories: action.categories
-            }
-        }
-
-        case 'CHANGE_TASK_STATUS': {
-            return {
-                ...state,
-                tasks: state.tasks.map((task) => task.id === action.id 
-                ? {...task, isDone: !task.isDone }
-                : task
-                ).filter(task => task.isDone === action.isListDone)
+                unDoneTasks: state.unDoneTasks.map((task) => task.id === action.id
+                    ? { ...task, isFavorite: !task.isFavorite }
+                    : task
+                )
             };
         }
 

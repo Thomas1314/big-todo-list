@@ -18,8 +18,6 @@ export const actions = {
 
     updateEditTaskText: (text) => ({ type: 'UPDATE_EDIT_TASK_TEXT', text}),
 
-    updateIsEditStatus: () => ({ type: 'UPDATE_IS_EDIT'}),
-
     editTaskText: (updateTaskParams) => ({ type: 'EDIT_TASK_TEXT', updateTaskParams }),
 
     changeTaskStatus: (id, isListDone) => ({ type: 'CHANGE_TASK_STATUS', id, isListDone }),
@@ -53,14 +51,14 @@ export const updateTaskText = (updateTaskParams) => async (dispatch) => {
     dispatch(actions.editTaskText(updateTaskParams));
 }
 
-export const updateDoneHandler = (updateDone) => async (dispatch) => {
+/* export const updateDoneHandler = (updateDone) => async (dispatch) => {
     await API.updateDoneHandler(updateDone);
     dispatch(actions.changeTaskStatus(updateDone.id, updateDone.isListDone));
-}
+} */
 
 export const getCategories = () => async (dispatch) => {
     const response = await API.getCategories();
-    dispatch(actions.setUnicCategories);
+    dispatch(actions.setUnicCategories(response));
 }
 
 export const getDefaultCategory = () => async (dispatch) => {
@@ -68,14 +66,18 @@ export const getDefaultCategory = () => async (dispatch) => {
     dispatch(actions.setCategory(response));
 }
 
-export const updateFavoriteHandler = (updateFavoriteParams) => async (dispatch) => {
+/* export const updateFavoriteHandler = (updateFavoriteParams) => async (dispatch) => {
     await API.updateFavoriteHandler(updateFavoriteParams);
     dispatch(actions.changeFavoriteStatus(updateFavoriteParams.id));
-}
+} */
 
 export const updateCategory = (updateCategoryParams) => async (dispatch) => {
     await API.updateCategory(updateCategoryParams);
     dispatch(actions.editCategoryIcon(updateCategory));
+}
+
+export const updateTask = (updateTaskParams) => async (dispatch) => {
+    await API.updateTask(updateTaskParams);
 }
 
 

@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid, Paper, Button, TextField } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
-import Icon from '@material-ui/core/Icon';
 import { Delete, Build, Star } from "@material-ui/icons";
-import { Input } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions,
          deleteTask,
-         updateDoneHandler,
-         updateTaskText,
-         updateFavoriteHandler 
+         updateTask
 } from "../../redux/actions";
-import { getChangedTaskText, getIsEditStatus } from '../../redux/selectors/selectors';
+import { getChangedTaskText } from '../../redux/selectors/selectors';
 import Checkbox from '@material-ui/core/Checkbox';
 import { StyledButton } from './taskButton';
 import StarIcon from '@material-ui/icons/Star';
@@ -38,59 +34,85 @@ const TaskItem = ({ task, categories, isListDone }) => {
   const dispatch = useDispatch();
 
   const changedTaskText = useSelector(getChangedTaskText);
-  const isEditStatus = useSelector(getIsEditStatus);
 
-  const changeTaskHandler = () => {
-    dispatch(actions.changeHandler);
-    dispatch(actions.updateIsEditStatus())
-  }
-
-  const updateTaskParams = {
+  const updateTextParams = {
     title: changedTaskText,
     id: task.id
-  };
+  }
 
-    const editHandleEnter = (event, updateTaskParams) => {
+    const editHandleEnter = (event) => {
     if (event.key === 'Enter') {
-      dispatch(updateTaskText(updateTaskParams));
-      dispatch(actions.updateIsEditStatus());
+      dispatch(updateTask({
+        isFavorite: task.isFavorite,
+        id: task.id,
+        isDone: task.isDone,
+        title: changedTaskText,
+        isListDone: isListDone
+      }))
+      dispatch(actions.editTaskText(updateTextParams));
     }
   }
 
-  const updateDone = {
-    isDone: !task.isDone,
-    id: task.id,
-    isListDone: isListDone
-  };
-
-  const updateCategoryHandler = () => {
-    dispatch(updateDoneHandler(updateDone));
-  }
-
-  const updateFavoriteParams = {
-    isFavorite: !task.isFavorite,
-    id: task.id
-  }
-
   const updateTaskFavorite = () => {
-    dispatch(updateFavoriteHandler(updateFavoriteParams))
+    dispatch(updateTask({
+      isFavorite: !task.isFavorite,
+      id: task.id,
+      isDone: task.isDone,
+      title: task.title,
+      isListDone: isListDone
+    }))
+    dispatch(actions.changeFavoriteStatus(task.id))
   }
 
   const inputTextChanger = event => {
-  const { value } = event.target;
-  const text = value;
-  dispatch(actions.updateEditTaskText(text));
+    const { value } = event.target;
+    const text = value;
+    dispatch(actions.updateEditTaskText(text));
+    }
+
+
+  const updateCategoryHandler = () => {
+    //debugger
+    dispatch(updateTask({
+      isFavorite: task.isFavorite,
+      title: task.title,
+      isDone: !task.isDone,
+      id: task.id,
+      isListDone: isListDone
+    }))
+    dispatch(actions.changeTaskStatus(task.id, isListDone))
+  }
+
+  const changeTaskHandler = () => {
+    dispatch(actions.changeHandler(task.id));
   }
 
   const deleteChosenTask = () => dispatch(deleteTask(task.id));
 
-  const enterHandler = (event) => editHandleEnter(event, updateTaskParams);
-    debugger
+  const enterHandler = (event) => changedTaskText.length > 0 ? editHandleEnter(event) : null;
+  
+
+    //debugger
     return (
     <Grid item xs={12}>
       <Paper elevation={2} style={styles.Paper}>
 
         <Checkbox onClick={updateCategoryHandler} />
+         {/* <div>
+          {categories.map(category => {
+            if (category.id === task.categoryID) {
+              return (<span className='material-icons' key={task.categoryID} 
+                style={{
+                  color: сategory.color,
+                  verticalAlign: "middle",
+                  margin: 5 
+                }}
+              >
+                  {category.icon}
+              </span>)
+            }
+          })}
+        </div>  */}
         {task.isEdit
                 ? <TextField
                   value={changedTaskText}
@@ -98,17 +120,18 @@ const TaskItem = ({ task, categories, isListDone }) => {
                   key={task.id + 1}
                   onKeyPress={enterHandler}
                   />
-                : isEditStatus
-                  ? (<span>{task.title}</span>)
-                  : (<span onClick={changeTaskHandler}>{task.title}</span>) 
+                : 
+                  //(<span>{task.title}</span>)
+                  (<span onClick={changeTaskHandler}>{task.title}</span>) 
             }
-          <IconButton
+
+          {/* <IconButton
             color="primary"
             aria-label="Edit"
             style={styles.Icon}
             >
-             {/* <Build fontSize="small" /> */}
-          </IconButton>
+             <Build fontSize="small" />
+          </IconButton> */}
 
           <StyledButton className="material-icons" onClick={updateTaskFavorite}>
             {task.isFavorite ?  <StarIcon /> : <StarBorderIcon /> }
