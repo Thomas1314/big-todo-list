@@ -1,54 +1,35 @@
 import React from 'react';
-import TaskInput from './components/TaskInput/TaskInput';
-import List from './components/List/List';
-import { Paper, Grid, Tabs, Tab, Hidden } from "@material-ui/core";
 import { BrowserRouter as Router, NavLink, Switch, Route } from 'react-router-dom';
 import navLinks from './utils/links';
-import routes from './utils/routes';
-/* import classes from "./appStyle.js";
- */
-const styles = {
-  Paper: {
-    padding: 20,
-    margin: "auto", 
-    textAlign: "center",
-    width: 500
-  }
-};
+import Main from './pages/Main/Main';
+import CompletedTasks from './pages/CompletedTasks/CompletedTasks';
+import { useStyles } from './appStyle';
+
 
 const App = () => {
-  
+
+  const classes = useStyles();
+
   return (
     <Router>
-      <nav className="navbar">
-        <div className="navbar_container">
+
+      <nav className={classes.navbar}>
+        <div className={classes.navbarContainer}>
           {navLinks.map(({ to, title}) => (
-            <NavLink className="nav_links" to={to} key={to}>
+            <NavLink className={classes.navLinks} to={to} key={to}>
               {title}
             </NavLink>
           ))}
         </div>
       </nav>
+
       <div>
         <Switch>
-          {routes.map(({ path, component }) => ( 
-            <Route key={path} exact path={path} component={component} />
-          ))}
+          <Route path='/todo' component={Main} />
+          <Route path='/doneTasks' component={CompletedTasks} />
         </Switch>
       </div>
-        <Grid container spacing={0}>
-            <Grid item xs={12}>
-              <Paper style={styles.Paper}>
-                <TaskInput />
-              </Paper>
-            </Grid>
 
-            <Grid item xs={12} style={styles.Paper}>
-              <Grid container>
-                <List />
-              </Grid>        
-            </Grid>
-        </Grid>
     </Router>
     );
 }

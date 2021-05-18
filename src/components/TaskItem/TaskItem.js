@@ -72,7 +72,6 @@ const TaskItem = ({ task, categories, isListDone }) => {
 
 
   const updateCategoryHandler = () => {
-    //debugger
     dispatch(updateTask({
       isFavorite: task.isFavorite,
       title: task.title,
@@ -96,7 +95,7 @@ const TaskItem = ({ task, categories, isListDone }) => {
     return (
     <Grid item xs={12}>
       <Paper elevation={2} style={styles.Paper}>
-
+        <div style={{padding: '9px'}}>{`${new Date(task.date).toLocaleDateString()}`}</div>
         <Checkbox onClick={updateCategoryHandler} />
          {/* <div>
           {categories.map(category => {
@@ -124,15 +123,6 @@ const TaskItem = ({ task, categories, isListDone }) => {
                   //(<span>{task.title}</span>)
                   (<span onClick={changeTaskHandler}>{task.title}</span>) 
             }
-
-          {/* <IconButton
-            color="primary"
-            aria-label="Edit"
-            style={styles.Icon}
-            >
-             <Build fontSize="small" />
-          </IconButton> */}
-
           <StyledButton className="material-icons" onClick={updateTaskFavorite}>
             {task.isFavorite ?  <StarIcon /> : <StarBorderIcon /> }
           </StyledButton>

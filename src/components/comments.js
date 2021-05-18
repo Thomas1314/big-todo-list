@@ -96,7 +96,8 @@
     </Grid>  */}
 
 
-    <Grid container spacing={0}>
+
+{/* <Grid container spacing={0}>
             <Grid item xs={12}>
               <Paper style={styles.Paper}>
                 <TaskInput />
@@ -108,4 +109,59 @@
                 <List />
               </Grid>        
             </Grid>
-        </Grid>
+        </Grid> */}
+        
+
+
+        <div>
+            <div className={classes.MainPageTitle}>
+                <h1>Tasks</h1>
+            </div>
+            <div className={classes.MainList}>
+                <div>
+                    <h5>Фильтрация по периоду:</h5>
+                    <div className={classes.MainListDateFilter}>
+                    <span className="AppText">с</span>
+                <MuiPickersUtilsProvider utils={}>
+                    <KeyboardDatePicker
+                        variant="inline"
+                        format="dd-MM-yyyy"
+                        margin="normal"
+                        KeyboardButtonProps={{
+                            "aria-label": "change date",
+                        }}
+                        disableToolbar
+                    />
+                </MuiPickersUtilsProvider>
+                        <span className="AppText">по</span>
+                <MuiPickersUtilsProvider>
+                    <KeyboardDatePicker
+                        variant="inline"
+                        format="dd-MM-yyyy"
+                        margin="normal"
+                    />
+                </MuiPickersUtilsProvider>
+
+                    </div>
+                    <Button
+                        variant="outlined"
+                        /* onClick={setSelectDate} */
+                    >
+                        Filter
+                    </Button>
+                </div>
+
+                <Grid item xs={12}>
+                    <Paper style={styles.Paper}>
+                        <TaskInput />
+                    </Paper>
+                </Grid>
+
+                <Grid item xs={12} style={styles.Paper}>
+                    <Grid container>
+                        <List isListDone={false} />
+                    </Grid>        
+                </Grid>
+
+            </div>
+        </div>

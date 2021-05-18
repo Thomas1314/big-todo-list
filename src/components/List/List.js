@@ -6,11 +6,18 @@ import ListHook from '../../hooks/ListHook';
 
 const List = ({ isListDone }) => {
     const { tasks, categories } = ListHook();
+    const [sortTasks, setSortTasks] = useState(tasks);
+
+    useEffect(() => {
+        setSortTasks(tasks
+            .filter(task => task.isDone === isListDone)
+            .sort((a) => a.isFavorite ? -1 : 1))
+    }, [tasks])
 
     //debugger;
     return (
         <Grid container>
-            {tasks.map((task) => {
+            {setSortTasks.map((task) => {
                 return <TaskItem 
                             key={task.id} 
                             task={task} 

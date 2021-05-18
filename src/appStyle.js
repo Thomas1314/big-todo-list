@@ -1,17 +1,21 @@
-.navbar {
-    align-items: center;
-    display: flex;
-}
+import { makeStyles } from '@material-ui/styles';
 
-.navbarContainer {
-    width: 500px;
-    display: flex;
-    justify-content: space-between;
-}
+export const useStyles = makeStyles(theme => ({
+    navbar: {
+        alignItems: "center",
+        display: "flex"
+    },
+    navbarContainer: {
+        width: "500px",
+        display: "flex",
+        justifyContent: "space-between",
+        margin: "auto"
+    },
+    navLinks: {
+        color: "black",
+        textDecoration: "none",
+        fontFamily: "Roboto",
+        textTransform: "uppercase"
+    }
+}));
 
-.navLinks {
-    color: black;
-    text-decoration: none;
-    font-family: "Roboto";
-    text-transform: uppercase;
-}

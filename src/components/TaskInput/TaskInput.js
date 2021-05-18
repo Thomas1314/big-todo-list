@@ -4,23 +4,25 @@ import Button from "@material-ui/core/Button";
 import MenuItem from '@material-ui/core/MenuItem';
 import { addTask, actions } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import ListHook from '../../hooks/ListHook';
 import { getCategoriesFromState, getNewTaskText, selectDefaultCategoryID } from '../../redux/selectors/selectors';
 import { Select } from '@material-ui/core';
 import { Icon } from '../Icon/icon';
+import { useStyles } from './TaskInputStyles';
 
 
 
 
  const TaskInput = () => {
+
+    const classes = useStyles();
     
     const newTaskText = useSelector(getNewTaskText);
-     const categories = useSelector(getCategoriesFromState);
-     const categoryID = useSelector(selectDefaultCategoryID);
-     const [open, setOpen] = useState(false);
-     const [category, setCategory] = useState(categoryID);
-     const [taskDate, setTaskDate] = useState(new Date(Date.now()));
-     const dispatch = useDispatch();
+    const categories = useSelector(getCategoriesFromState);
+    const categoryID = useSelector(selectDefaultCategoryID);
+    const [open, setOpen] = useState(false);
+    const [category, setCategory] = useState(categoryID);
+    const [taskDate, setTaskDate] = useState(new Date(Date.now()));
+    const dispatch = useDispatch();
 
      useEffect(() => {
          setCategory(categoryID);
@@ -61,7 +63,7 @@ import { Icon } from '../Icon/icon';
 
      //debugger;
      return (
-        <div className='todo_form'>
+        <div className={classes.todoForm}>
             <Input
             value={newTaskText}
             onChange={inputChange}

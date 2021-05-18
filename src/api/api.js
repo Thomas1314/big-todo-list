@@ -2,8 +2,10 @@ import axios from 'axios';
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'http://localhost:3000/'  
+    baseURL: 'http://localhost:3000/'   /* `${process.env.REACT_APP_URL}` */
 })
+
+const limit = 50;   /* `${process.env.REACT_APP_TASK_LIMIT}` */
 
 
 export const API = {
@@ -44,7 +46,7 @@ export const API = {
       },
 
       updateCategory: ({ id, icon, color}) => {
-        instance.patch(`/categories/${id}`, { icon: icon, color: color });
+        instance.patch(`/categories/${id}`, { icon, color });
       },
 
       updateDefaultCategory: (id) => {
