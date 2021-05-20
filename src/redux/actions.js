@@ -8,15 +8,21 @@ export const actions = {
 
     changeHandler: (id) => ({ type: 'CHANGE_HANDLER', id }),
 
+    changeCategoryHandler: (id) => ({ type: 'CHANGE_CATEGORY_HANDLER', id }),
+
     toggleIsFetching: (isFetching) => ({ type: 'TOGGLE_IS_FETCHING', isFetching }),
 
     deleteTaskAC: (id) => ({ type: 'DELETE_TASK', id }),
+
+    deleteCategory: (id) => ({ type: 'DELETE_CATEGORY', id }),
 
     addNewTask: (task) => ({ type: 'ADD_NEW_TASK', task }),
 
     updateNewMessageText: (text) => ({ type: 'UPDATE_NEW_MESSAGE_TEXT', text }),
 
     updateEditTaskText: (text) => ({ type: 'UPDATE_EDIT_TASK_TEXT', text}),
+
+    updateEditCategoryText: (text) => ({ type: "UPDATE_EDIT_CATEGORY_TEXT", text}),
 
     editTaskText: (updateTaskParams) => ({ type: 'EDIT_TASK_TEXT', updateTaskParams }),
 
@@ -51,10 +57,10 @@ export const updateTaskText = (updateTaskParams) => async (dispatch) => {
     dispatch(actions.editTaskText(updateTaskParams));
 }
 
-/* export const updateDoneHandler = (updateDone) => async (dispatch) => {
-    await API.updateDoneHandler(updateDone);
-    dispatch(actions.changeTaskStatus(updateDone.id, updateDone.isListDone));
-} */
+export const updateCategoryText = (updateCategoryParams) => async (dispatch) => {
+    await API.updateCategoryText(updateCategoryParams);
+    dispatch(actions.updateEditCategoryText(updateCategoryParams));
+}
 
 export const getCategories = () => async (dispatch) => {
     const response = await API.getCategories();
@@ -66,10 +72,10 @@ export const getDefaultCategory = () => async (dispatch) => {
     dispatch(actions.setCategory(response));
 }
 
-/* export const updateFavoriteHandler = (updateFavoriteParams) => async (dispatch) => {
-    await API.updateFavoriteHandler(updateFavoriteParams);
-    dispatch(actions.changeFavoriteStatus(updateFavoriteParams.id));
-} */
+export const updateDefaultCategory = (id) => async (dispatch) => {
+    await API.updateDefaultCategory(id);
+    dispatch(actions.setCategory(id));
+}
 
 export const updateCategory = (updateCategoryParams) => async (dispatch) => {
     await API.updateCategory(updateCategoryParams);
@@ -78,6 +84,11 @@ export const updateCategory = (updateCategoryParams) => async (dispatch) => {
 
 export const updateTask = (updateTaskParams) => async (dispatch) => {
     await API.updateTask(updateTaskParams);
+}
+
+export const deleteCategory = (id) => async (dispatch) => {
+    await API.deleteCategory(id);
+    dispatch(actions.deleteCategory(id));
 }
 
 

@@ -47,7 +47,7 @@ import { useStyles } from './TaskInputStyles';
                    
      const addHandleEnter = (event) => {
          if (newTaskText && newTaskText.length < 30 && event.key === 'Enter') {
-             dispatch(addTask(newTaskParams)                                                                                         )
+             dispatch(addTask(newTaskParams))
          }
      }
 
@@ -77,17 +77,17 @@ import { useStyles } from './TaskInputStyles';
                     onChange={handleChangeCategory}
                     value={category}
             >
-                    {/* {
-                        categories.map(({ id, color, icon, name}) => (
-                            <MenuItem key={id} value={id}>
-                                <>
-                                    <Icon color={color} icon={icon} />
-                                    {open && name}
-                                </>
+                {
+                    categories.map(({ id, color, icon, name}) => (
+                        <MenuItem key={id} value={id}>
+                            <>
+                                <Icon color={color} icon={icon} />
+                                {open && name}
+                            </>
     
-                            </MenuItem>
-                        ))
-                    } */}
+                        </MenuItem>
+                    ))
+                }
             </Select>
 
             <Button 

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, NavLink, Switch, Route } from 'react-router-do
 import navLinks from './utils/links';
 import Main from './pages/Main/Main';
 import CompletedTasks from './pages/CompletedTasks/CompletedTasks';
+import Settings from './pages/Settings/Settings';
 import { useStyles } from './appStyle';
 
 
@@ -27,6 +28,7 @@ const App = () => {
         <Switch>
           <Route path='/todo' component={Main} />
           <Route path='/doneTasks' component={CompletedTasks} />
+          <Route path='/settings' component={Settings} />
         </Switch>
       </div>
 

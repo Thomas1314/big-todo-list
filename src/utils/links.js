@@ -8,7 +8,7 @@ const navLinks = [
         title: "Completed Tasks"
     },
     {
-        to: "settings",
+        to: "/settings",
         title: "Settings"
     }
 ];

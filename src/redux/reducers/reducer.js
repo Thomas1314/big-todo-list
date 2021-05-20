@@ -2,20 +2,18 @@
 const initialState = {
     doneTasks: [],
     unDoneTasks: [],
-    /* tasks: [], */
     newTaskText: "",
     changedTaskText: "",
+    changedCategoryText: "",
     isFetching: false,
     editItem: false,
-    editStatus: false,
-    isEditStatus: false,
     categories: [],
     categoryID: null,
     categoriesName: ""
 }
 
 export const reducer = (state = initialState, action) => {
-    //debugger
+
     switch (action.type) {
         case 'SET_TASKS':
             return {
@@ -34,6 +32,14 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 doneTasks: [...state.doneTasks.filter((task) => task.id !== action.id)],
                 unDoneTasks: [...state.unDoneTasks.filter((task) => task.id !== action.id)]
+            }
+
+        case 'DELETE_CATEGORY':
+            return {
+                ...state,
+                categories: [
+                    ...state.categories.filter((category) => category.id !== action.id)
+                ]
             }
 
         case 'ADD_NEW_TASK': {
@@ -62,6 +68,13 @@ export const reducer = (state = initialState, action) => {
             }
         }
 
+        case 'UPDATE_EDIT_CATEGORY_TEXT': {
+            return {
+                ...state,
+                changedCategoryText: action.text
+            }
+        }
+
         case 'EDIT_TASK_TEXT': {
             return {
                 ...state,
@@ -86,6 +99,18 @@ export const reducer = (state = initialState, action) => {
 
                 changedTaskText: state.unDoneTasks.find((task) => task.id === action.id)
                     .title 
+            }
+        }
+
+        case 'CHANGE_CATEGORY_HANDLER': {
+            return {
+                ...state,
+                categories: state.categories.map((category) => 
+                    category.id === action.id ? { ...category, isEdit: !category.isEdit} : { ...category, isEdit: false }
+                ),
+
+                changedCategoryText: state.categories.find((categories) => categories.id === action.id)
+                    .name
             }
         }
 

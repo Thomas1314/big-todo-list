@@ -14,10 +14,10 @@ const List = ({ isListDone }) => {
             .sort((a) => a.isFavorite ? -1 : 1))
     }, [tasks])
 
-    //debugger;
+
     return (
         <Grid container>
-            {setSortTasks.map((task) => {
+            {sortTasks.map((task) => {
                 return <TaskItem 
                             key={task.id} 
                             task={task} 

@@ -7,6 +7,7 @@ import List from "../../components/List/List";
 import { Paper, Grid } from "@material-ui/core";
 import DateFnsUtils from '@date-io/moment';
 import { useStyles } from './MainStyles';
+import ListWrapper from '../../components/ListWrapper/ListWrapper';
 
 
 const styles = {

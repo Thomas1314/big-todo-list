@@ -4,7 +4,7 @@ import { getTasksFromState, getCategoriesFromState, getIsFetching } from '../red
 import { getDefaultCategory, getCategories } from '../redux/actions';
 
 const ListHook = () => {
-    //debugger
+    
     const dispatch = useDispatch();
     const tasks = useSelector(getTasksFromState);
     const unDoneTasks = useSelector(getTasksFromState);

@@ -91,12 +91,12 @@ const TaskItem = ({ task, categories, isListDone }) => {
   const enterHandler = (event) => changedTaskText.length > 0 ? editHandleEnter(event) : null;
   
 
-    //debugger
+
     return (
     <Grid item xs={12}>
       <Paper elevation={2} style={styles.Paper}>
         <div style={{padding: '9px'}}>{`${new Date(task.date).toLocaleDateString()}`}</div>
-        <Checkbox onClick={updateCategoryHandler} />
+        <Checkbox onClick={updateCategoryHandler} checked={task.isDone} />
          {/* <div>
           {categories.map(category => {
             if (category.id === task.categoryID) {

@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import List from '../List/List';
 import ListHook from '../../hooks/ListHook';
 
@@ -7,6 +7,7 @@ const ListWrapper = ({ isListDone }) => {
     const {
         tasks,
         unDoneTasks,
+        categories,
         dispatch
     } = ListHook();
 
@@ -14,8 +15,9 @@ const ListWrapper = ({ isListDone }) => {
         <List 
             tasks={!isListDone ? unDoneTasks : tasks}
             isListDone={isListDone}
+            categories={categories}
         />
     )
 }
 
-export default ListWrapper;
+export default ListWrapper; */

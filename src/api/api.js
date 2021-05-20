@@ -31,6 +31,10 @@ export const API = {
         });
       },
 
+      updateCategoryText: (updateCategoryParams) => {
+        instance.patch(`/categories/${updateCategoryParams.id}`, { name: updateCategoryParams.name });
+      },
+
       getCategories: () => {
         instance.get(`/categories`)
         .then((response) => response.data.id);
