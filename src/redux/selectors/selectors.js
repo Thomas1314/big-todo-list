@@ -1,6 +1,3 @@
-
-
-/* export const getTasksFromState = (state) => state.tasks; */
 export const getTasksFromState = (state) => state.unDoneTasks;
 export const getDoneTasksFromState = (state) => state.doneTasks;
 

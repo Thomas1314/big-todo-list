@@ -27,6 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "lint": "eslint . --fix",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "api": "json-server --watch data.json",
@@ -52,6 +53,9 @@
   },
   "devDependencies": {
     "eslint": "^7.18.0",
-    "eslint-plugin-react": "^7.22.0"
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "^2.3.0"
   }
 }

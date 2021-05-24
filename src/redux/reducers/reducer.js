@@ -21,11 +21,11 @@ export const reducer = (state = initialState, action) => {
                 doneTasks: action.tasks
             }
 
-        /* case 'SET_CATEGORY':
+        case 'SET_CATEGORY':
             return {
                 ...state,
                 categoiyID: action.id
-            } */
+            }
 
         case 'DELETE_TASK':
             return {
@@ -47,10 +47,14 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 unDoneTasks: [...state.unDoneTasks, action.task],
                 newTaskText: ""
+            }
+        }
 
-                /* ...state,
-                tasks: [...state.tasks, action.task],
-                newTaskText: "" */
+        case 'ADD_NEW_CATEGORY': {
+            return {
+                ...state,
+                categories: [...state.categories, action.category],
+                categoriesName: ""
             }
         }
 
@@ -65,6 +69,13 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 changedTaskText: action.text
+            }
+        }
+
+        case 'UPDATE_CATEGORY_TEXT': {
+            return {
+                ...state,
+                categoriesName: action.text
             }
         }
 
@@ -114,12 +125,12 @@ export const reducer = (state = initialState, action) => {
             }
         }
 
-        /* case 'SET_UNIC_CATEGORIES': {
+        case 'SET_UNIC_CATEGORIES': {
             return {
                 ...state,
                 categories: action.categories
             }
-        } */
+        }
 
         case 'CHANGE_TASK_STATUS': {
             return action.isListDone ? 

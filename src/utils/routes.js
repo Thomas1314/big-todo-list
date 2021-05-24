@@ -1,26 +1,24 @@
 import React from 'react';
-import withSuspense from '../hoc/withSuspense';
-
-const Main = React.lazy(() => import('../pages/Main/Main'));
-const CompletedTasks = React.lazy(() => import('../pages/CompletedTasks/CompletedTasks'));
-
-const SuspendedMain = withSuspense(Main);
-const SuspendedCompletedTasks = withSuspense(CompletedTasks);
+import { Main } from '../pages/Main'
+import { Settings } from '../pages/Settings'
+import { CompletedTasks } from '../pages/CompletedTasks'
 
 
-const routes = [
+export const routes = [
     {
-        path: "/main",
-        Component: SuspendedMain
+        path: "/todo",
+        Component: Main
     },
     {
-        path: "/completedTasks",
-        Component: SuspendedMain
+        path: "/doneTasks",
+        Component: CompletedTasks
+    },
+    {
+        path: "/settings",
+        Component: Settings
     },
     {
         path: "/",
-        Component: SuspendedMain
+        Component: Main
     }
 ];
-
-export default routes;

@@ -18,9 +18,13 @@ export const actions = {
 
     addNewTask: (task) => ({ type: 'ADD_NEW_TASK', task }),
 
+    addNewCategory: (category) => ({ type: 'ADD_NEW_CATEGORY', category }),
+
     updateNewMessageText: (text) => ({ type: 'UPDATE_NEW_MESSAGE_TEXT', text }),
 
-    updateEditTaskText: (text) => ({ type: 'UPDATE_EDIT_TASK_TEXT', text}),
+    updateEditTaskText: (text) => ({ type: 'UPDATE_EDIT_TASK_TEXT', text }),
+
+    updateCategoryText: (text) => ({ type: 'UPDATE_CATEGORY_TEXT', text }),
 
     updateEditCategoryText: (text) => ({ type: "UPDATE_EDIT_CATEGORY_TEXT", text}),
 
@@ -42,26 +46,6 @@ export const getTasks = (params) => async (dispatch) => {
     dispatch(actions.setTasks(response));
 }
 
-export const deleteTask = (id) => async (dispatch) => {
-    await API.deleteTask(id);
-    dispatch(actions.deleteTaskAC(id));
-}
-
-export const addTask = (newTaskParams) => async (dispatch) => {
-    const response = await API.addTask(newTaskParams);
-    dispatch(actions.addNewTask(response.data));
-}
-
-export const updateTaskText = (updateTaskParams) => async (dispatch) => {
-    await API.updateTask(updateTaskParams);
-    dispatch(actions.editTaskText(updateTaskParams));
-}
-
-export const updateCategoryText = (updateCategoryParams) => async (dispatch) => {
-    await API.updateCategoryText(updateCategoryParams);
-    dispatch(actions.updateEditCategoryText(updateCategoryParams));
-}
-
 export const getCategories = () => async (dispatch) => {
     const response = await API.getCategories();
     dispatch(actions.setUnicCategories(response));
@@ -77,19 +61,44 @@ export const updateDefaultCategory = (id) => async (dispatch) => {
     dispatch(actions.setCategory(id));
 }
 
-export const updateCategory = (updateCategoryParams) => async (dispatch) => {
-    await API.updateCategory(updateCategoryParams);
-    dispatch(actions.editCategoryIcon(updateCategory));
-}
-
-export const updateTask = (updateTaskParams) => async (dispatch) => {
-    await API.updateTask(updateTaskParams);
+export const deleteTask = (id) => async (dispatch) => {
+    await API.deleteTask(id);
+    dispatch(actions.deleteTaskAC(id));
 }
 
 export const deleteCategory = (id) => async (dispatch) => {
     await API.deleteCategory(id);
     dispatch(actions.deleteCategory(id));
 }
+
+export const addTask = (newTaskParams) => async (dispatch) => {
+    debugger
+    const response = await API.addTask(newTaskParams);
+    dispatch(actions.addNewTask(response.data));
+}
+
+export const addCategory = (newCategoryParams) => async (dispatch) => {
+    const response = await API.addCategory(newCategoryParams);
+    dispatch(actions.addNewCategory(response.data));
+}
+
+export const updateTask = (updateTaskParams) => async (dispatch) => {
+    await API.updateTask(updateTaskParams);
+}
+
+export const updateCategoryText = (updateCategoryParams) => async (dispatch) => {
+    await API.updateCategoryText(updateCategoryParams);
+    dispatch(actions.updateEditCategoryText(updateCategoryParams));
+}
+
+export const updateCategory = (updateCategoryParams) => async (dispatch) => {
+    await API.updateCategory(updateCategoryParams);
+    dispatch(actions.editCategoryIcon(updateCategory));
+}
+
+
+
+
 
 
 
