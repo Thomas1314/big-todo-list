@@ -8,18 +8,21 @@ export const CategoriesList = ({
   editCategoryId,
   setButton,
   setChoosesIcon,
-}) => (
-  <>
-    {categories.map((category) => (
-      <Category
-        category={category}
-        key={category.id}
-        setEdit={setEdit}
-        setEditCategoryId={setEditCategoryId}
-        editCategoryId={editCategoryId}
-        setButton={setButton}
-        setChoosesIcon={setChoosesIcon}
-      />
-    ))}
-  </>
-);
+}) => {
+  debugger;
+  return (
+    <>
+      {categories.map((category) => (
+        <Category
+          category={category}
+          key={category.id}
+          setEdit={setEdit}
+          setEditCategoryId={setEditCategoryId}
+          editCategoryId={editCategoryId}
+          setButton={setButton}
+          setChoosesIcon={setChoosesIcon}
+        />
+      ))}
+    </>
+  );
+};

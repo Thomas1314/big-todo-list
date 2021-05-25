@@ -33,7 +33,7 @@ export const Settings = () => {
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getDefaultCategory());
-  });
+  }, []);
 
   useEffect(() => {
     setCategory(categoryId);
@@ -50,7 +50,7 @@ export const Settings = () => {
     dispatch(actions.setCategory(event.target.value));
     dispatch(updateDefaultCategory(event.target.value));
   };
-  debugger;
+
   return (
     <div>
       <h1 className={classes.SettingsMainTitle}>Settings</h1>

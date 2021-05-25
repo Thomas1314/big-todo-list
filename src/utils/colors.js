@@ -1,3 +1,3 @@
-const colors = ["yellowgreen", "yellow", "black"];
+const colors = ['yellowgreen', 'yellow', 'black'];
 
 export default colors;

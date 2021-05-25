@@ -60,7 +60,7 @@ const TaskInput = () => {
   const handleChangeCategory = (event) => {
     dispatch(actions.setCategory(event.target.value));
   };
-
+  debugger;
   return (
     <div className={classes.todoForm}>
       <Input
@@ -70,7 +70,6 @@ const TaskInput = () => {
         placeholder="Todo"
         style={{ width: '90%' }}
       />
-
       <Select
         onOpen={onOpen}
         onClose={onClose}

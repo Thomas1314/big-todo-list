@@ -5,9 +5,9 @@ const instance = axios.create({
   baseURL: 'http://localhost:3000/',
 });
 
-const limit = 50;
+/* const limit = 50; */
 
-export const API = {
+const API = {
   getTasks: (url) => {
     instance.get(`${url}`).then((response) => response.data);
   },
@@ -35,6 +35,7 @@ export const API = {
   },
 
   getCategories: () => {
+    debugger;
     instance.get('/categories').then((response) => response.data.id);
   },
 
