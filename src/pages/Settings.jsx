@@ -81,23 +81,22 @@ export const Settings = () => {
             setChoosesIcon={setChoosesIcon}
           />
           <h4>Default category: </h4>
-          {category !== null ? (
-            <Select
-              onOpen={onOpen}
-              onClose={onClose}
-              onChange={handleChangeCategory}
-              value={category}
-            >
-              {categories.map(({ id, color, icon, name }) => (
-                <MenuItem key={id} value={id}>
-                  <>
-                    <Icon color={color} icon={icon} />
-                    {opened && name}
-                  </>
-                </MenuItem>
-              ))}
-            </Select>
-          ) : null}
+
+          <Select
+            onOpen={onOpen}
+            onClose={onClose}
+            onChange={handleChangeCategory}
+            value={category}
+          >
+            {categories.map(({ id, color, icon, name }) => (
+              <MenuItem key={id} value={id}>
+                <>
+                  <Icon color={color} icon={icon} />
+                  {opened && name}
+                </>
+              </MenuItem>
+            ))}
+          </Select>
         </div>
       </div>
     </div>

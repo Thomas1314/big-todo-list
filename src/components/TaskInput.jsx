@@ -26,7 +26,7 @@ const TaskInput = () => {
 
   useEffect(() => {
     setCategory(categoryID);
-  }, [categoryID]);
+  }, []);
 
   const onOpen = () => {
     setOpen(true);
@@ -60,7 +60,6 @@ const TaskInput = () => {
   const handleChangeCategory = (event) => {
     dispatch(actions.setCategory(event.target.value));
   };
-  debugger;
   return (
     <div className={classes.todoForm}>
       <Input
@@ -70,6 +69,7 @@ const TaskInput = () => {
         placeholder="Todo"
         style={{ width: '90%' }}
       />
+      {/* {category !== null ? ( */}
       <Select
         onOpen={onOpen}
         onClose={onClose}
@@ -85,7 +85,7 @@ const TaskInput = () => {
           </MenuItem>
         ))}
       </Select>
-
+      {/*  ) : null} */}
       <Button
         type="submit"
         disabled={newTaskText.length === 0 || newTaskText.length > 30}

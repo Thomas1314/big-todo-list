@@ -9,7 +9,6 @@ export const CategoriesList = ({
   setButton,
   setChoosesIcon,
 }) => {
-  debugger;
   return (
     <>
       {categories.map((category) => (

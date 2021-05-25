@@ -15,9 +15,9 @@ const ListHook = () => {
   const isFetching = useSelector(getIsFetching);
 
   useEffect(() => {
-    dispatch(getCategories());
-    dispatch(getDefaultCategory());
-  });
+    // dispatch(getCategories());
+    // dispatch(getDefaultCategory());
+  }, []);
 
   return {
     tasks,

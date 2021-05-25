@@ -19,6 +19,13 @@ export const reducer = (state = initialState, action) => {
         doneTasks: action.tasks,
       };
 
+    case 'SET_DONE_TASKS': {
+      return {
+        ...state,
+        unDoneTasks: action.tasks,
+      };
+    }
+
     case 'SET_CATEGORY':
       return {
         ...state,
@@ -97,6 +104,21 @@ export const reducer = (state = initialState, action) => {
                 isEdit: !task.isEdit,
               }
             : task
+        ),
+      };
+    }
+
+    case 'EDIT_CATEGORY_TEXT': {
+      return {
+        ...state,
+        categories: state.categories.map((category) =>
+          category.id === action.updateCategoryParams.id
+            ? {
+                ...category,
+                name: action.updateCategoryParams.name,
+                isEdit: !category.isEdit,
+              }
+            : category
         ),
       };
     }

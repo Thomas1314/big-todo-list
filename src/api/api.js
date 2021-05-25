@@ -2,26 +2,28 @@ import axios from 'axios';
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'http://localhost:3000/' /* `${process.env.REACT_APP_URL}` */,
 });
 
-/* const limit = 50; */
+const limit = 50;
 
-const API = {
-  getTasks: (url) => {
-    instance.get(`${url}`).then((response) => response.data);
+export const API = {
+  getTasks: (params) => {
+    instance
+      .get(
+        `tasks?date_gte=${params.dateFrom}&date_lte=${params.dateTo}&${params.searchString}&isDone=${params.isListDone}&_limit=${limit}`
+      )
+      .then((response) => response.data);
   },
 
   deleteTask(id) {
-    return instance.delete(`/tasks/${id}`);
+    instance.delete(`/tasks/${id}`);
   },
 
-  addTask: (newTaskParams) => {
-    return instance.post('/tasks/', newTaskParams);
-  },
+  addTask: (NewTaskParams) => instance.post('/tasks/', NewTaskParams),
 
   updateTask: (updateTaskParams) => {
-    return instance.patch(`/tasks/${updateTaskParams.id}`, {
+    instance.patch(`/tasks/${updateTaskParams.id}`, {
       title: updateTaskParams.title,
       isDone: updateTaskParams.isDone,
       isFavorite: updateTaskParams.isFavorite,
@@ -34,14 +36,11 @@ const API = {
     });
   },
 
-  getCategories: () => {
-    debugger;
-    instance.get('/categories').then((response) => response.data.id);
-  },
+  getCategories: () =>
+    instance.get('/categories').then((response) => response.data),
 
-  getDefaultCategory: () => {
-    instance.get('/defaultCategory').then((response) => response.data.id);
-  },
+  getDefaultCategory: () =>
+    instance.get('/defaultCategory').then((response) => response.data.id),
 
   deleteCategory: (id) => instance.delete(`/categories/${id}`),
 
@@ -56,5 +55,3 @@ const API = {
   addCategory: (newCategoryParams) =>
     instance.post('/categories', newCategoryParams),
 };
-
-export default API;

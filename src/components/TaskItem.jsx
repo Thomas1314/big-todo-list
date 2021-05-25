@@ -9,6 +9,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { StyledButton } from './TaskButton';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import { useStyles } from './TaskItem.styles';
 
 const styles = {
   Icon: {
@@ -26,6 +27,7 @@ const styles = {
 
 const TaskItem = ({ task, categories, isListDone }) => {
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   const changedTaskText = useSelector(getChangedTaskText);
 
@@ -89,7 +91,6 @@ const TaskItem = ({ task, categories, isListDone }) => {
 
   const enterHandler = (event) =>
     changedTaskText.length > 0 ? editHandleEnter(event) : null;
-
   return (
     <Grid item xs={12}>
       <Paper elevation={2} style={styles.Paper}>
@@ -97,21 +98,26 @@ const TaskItem = ({ task, categories, isListDone }) => {
           task.date
         ).toLocaleDateString()}`}</div>
         <Checkbox onClick={updateCategoryHandler} checked={task.isDone} />
-        {/* <div>
-          {categories.map(category => {
+        <div style={{ padding: '10px' }}>
+          {categories.map((category) => {
             if (category.id === task.categoryID) {
-              return (<span className='material-icons' key={task.categoryID} 
-                style={{
-                  color: сategory.color,
-                  verticalAlign: "middle",
-                  margin: 5 
-                }}
-              >
+              return (
+                <span
+                  key={task.categoryID}
+                  className="material-icons"
+                  style={{
+                    color: category.color,
+                    verticalAlign: 'middle',
+                    margin: 5,
+                  }}
+                >
                   {category.icon}
-              </span>)
+                </span>
+              );
             }
           })}
-        </div>  */}
+        </div>
+
         {task.isEdit ? (
           <TextField
             value={changedTaskText}

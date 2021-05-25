@@ -1,42 +1,30 @@
-import API from '../api/api';
+import { API } from '../api/api';
 
 export const actions = {
-  setTasks: (tasks) => ({ type: 'SET_TASKS', tasks }),
-
-  setCategory: (id) => ({ type: 'SET_CATEGORY', id }),
-
-  changeHandler: (id) => ({ type: 'CHANGE_HANDLER', id }),
-
-  changeCategoryHandler: (id) => ({ type: 'CHANGE_CATEGORY_HANDLER', id }),
-
-  toggleIsFetching: (isFetching) => ({
-    type: 'TOGGLE_IS_FETCHING',
-    isFetching,
-  }),
-
-  deleteTaskAC: (id) => ({ type: 'DELETE_TASK', id }),
-
-  deleteCategory: (id) => ({ type: 'DELETE_CATEGORY', id }),
-
-  addNewTask: (task) => ({ type: 'ADD_NEW_TASK', task }),
-
-  addNewCategory: (category) => ({ type: 'ADD_NEW_CATEGORY', category }),
-
   updateNewMessageText: (text) => ({ type: 'UPDATE_NEW_MESSAGE_TEXT', text }),
 
   updateEditTaskText: (text) => ({ type: 'UPDATE_EDIT_TASK_TEXT', text }),
-
-  updateCategoryText: (text) => ({ type: 'UPDATE_CATEGORY_TEXT', text }),
 
   updateEditCategoryText: (text) => ({
     type: 'UPDATE_EDIT_CATEGORY_TEXT',
     text,
   }),
 
+  updateCategoryText: (text) => ({ type: 'UPDATE_CATEGORY_TEXT', text }),
+
   editTaskText: (updateTaskParams) => ({
     type: 'EDIT_TASK_TEXT',
     updateTaskParams,
   }),
+
+  editCategoryText: (updateCategoryParams) => ({
+    type: 'EDIT_CATEGORY_TEXT',
+    updateCategoryParams,
+  }),
+
+  deleteTask: (id) => ({ type: 'DELETE_TASK', id }),
+
+  deleteCategory: (id) => ({ type: 'DELETE_CATEGORY', id }),
 
   changeTaskStatus: (id, isListDone) => ({
     type: 'CHANGE_TASK_STATUS',
@@ -46,24 +34,44 @@ export const actions = {
 
   changeFavoriteStatus: (id) => ({ type: 'CHANGE_FAVORITE_STATUS', id }),
 
+  editCategoryIcon: (UpdateCategoryParams) => ({
+    type: 'EDIT_CATEGORY_ICON',
+    UpdateCategoryParams,
+  }),
+
+  addNewTask: (task) => ({ type: 'ADD_NEW_TASK', task }),
+
+  addNewCategory: (category) => ({ type: 'ADD_NEW_CATEGORY', category }),
+
+  changeHandler: (id) => ({ type: 'CHANGE_HANDLER', id }),
+
+  changeCategoryHandler: (id) => ({ type: 'CHANGE_CATEGORY_HANDLER', id }),
+
+  setTasks: (tasks) => ({ type: 'SET_TASKS', tasks }),
+
+  setDoneTasks: (tasks) => ({ type: 'SET_DONE_TASKS', tasks }),
+
   setUnicCategories: (categories) => ({
     type: 'SET_UNIC_CATEGORIES',
     categories,
   }),
 
-  editCategoryIcon: (updateCategoryParams) => ({
-    type: 'EDIT_CATEGORY_ICON',
-    updateCategoryParams,
+  setCategory: (id) => ({ type: 'SET_CATEGORY', id }),
+
+  toggleIsFetching: (isFetching) => ({
+    type: 'TOGGLE_IS_FETCHING',
+    isFetching,
   }),
 };
 
 export const getTasks = (params) => async (dispatch) => {
   const response = await API.getTasks(params);
-  dispatch(actions.setTasks(response));
+  params.isListDone
+    ? dispatch(actions.setTasks(response))
+    : dispatch(actions.setDoneTasks(response));
 };
 
 export const getCategories = () => async (dispatch) => {
-  debugger;
   const response = await API.getCategories();
   dispatch(actions.setUnicCategories(response));
 };
@@ -89,7 +97,6 @@ export const deleteCategory = (id) => async (dispatch) => {
 };
 
 export const addTask = (newTaskParams) => async (dispatch) => {
-  debugger;
   const response = await API.addTask(newTaskParams);
   dispatch(actions.addNewTask(response.data));
 };
@@ -106,7 +113,7 @@ export const updateTask = (updateTaskParams) => async (dispatch) => {
 export const updateCategoryText =
   (updateCategoryParams) => async (dispatch) => {
     await API.updateCategoryText(updateCategoryParams);
-    dispatch(actions.updateEditCategoryText(updateCategoryParams));
+    dispatch(actions.editCategoryText(updateCategoryParams));
   };
 
 export const updateCategory = (updateCategoryParams) => async (dispatch) => {
