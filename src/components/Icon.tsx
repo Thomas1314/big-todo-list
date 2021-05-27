@@ -1,7 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
+import { Colors, Icons } from '../api/api';
 
-export const Icon = ({ icon, color }) => {
+export type IconType = {
+  icon: Icons | undefined;
+  color: Colors | undefined;
+};
+
+export const Icon: React.FC<IconType> = ({ icon, color }) => {
   const useStylesSpan = makeStyles({
     CategoryIcon: {
       color: color,

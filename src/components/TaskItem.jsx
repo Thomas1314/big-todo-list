@@ -91,6 +91,7 @@ const TaskItem = ({ task, categories, isListDone }) => {
 
   const enterHandler = (event) =>
     changedTaskText.length > 0 ? editHandleEnter(event) : null;
+  debugger;
   return (
     <Grid item xs={12}>
       <Paper elevation={2} style={styles.Paper}>

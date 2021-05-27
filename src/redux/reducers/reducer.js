@@ -9,6 +9,7 @@ const initialState = {
   categories: [],
   categoryID: null,
   categoriesName: '',
+  endNumber: 8,
 };
 
 export const reducer = (state = initialState, action) => {

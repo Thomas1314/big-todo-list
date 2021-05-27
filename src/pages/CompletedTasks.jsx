@@ -6,7 +6,8 @@ import {
 import { List } from './../components/TaskList';
 import DateFnsUtils from '@date-io/moment';
 import { useStyles } from './CompletedTasks.styles';
-import { Paper, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import { ListWrapper } from '../components/TaskListWrapper';
 
 const styles = {
   Paper: {
@@ -64,7 +65,11 @@ export const CompletedTasks = () => {
 
       <Grid item xs={12} style={styles.Paper}>
         <Grid container>
-          <List isListDone />
+          <ListWrapper
+            isListDone
+            selectedDateFrom={selectedDateFrom}
+            selectedDateTo={selectedDateTo}
+          />
         </Grid>
       </Grid>
     </Grid>

@@ -88,7 +88,7 @@ export const updateDefaultCategory = (id) => async (dispatch) => {
 
 export const deleteTask = (id) => async (dispatch) => {
   await API.deleteTask(id);
-  dispatch(actions.deleteTaskAC(id));
+  dispatch(actions.deleteTask(id));
 };
 
 export const deleteCategory = (id) => async (dispatch) => {
