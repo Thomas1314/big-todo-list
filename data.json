@@ -342,166 +342,121 @@
       "id": 44
     },
     {
-      "title": "цуцу",
+      "title": "58585",
       "isDone": false,
       "isEdit": false,
       "categoryID": null,
-      "isFavorite": true,
-      "date": 1621947087214,
+      "isFavorite": false,
+      "date": 1622187316495,
       "id": 45
     },
     {
-      "title": "5858",
+      "title": "585",
       "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1621947087214,
+      "date": 1622187480223,
       "id": 46
     },
     {
-      "title": "5585",
-      "isDone": true,
+      "title": "585",
+      "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1621947087214,
+      "date": 1622187480223,
       "id": 47
     },
     {
-      "title": "ццц",
+      "title": "888",
       "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1621947843245,
+      "date": 1622187813579,
       "id": 48
     },
     {
-      "title": "858585",
+      "title": "7777",
       "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1621947891458,
+      "date": 1622188543532,
       "id": 49
     },
     {
-      "title": "5858",
+      "title": "wwww",
       "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1621948045609,
+      "date": 1622189693281,
       "id": 50
     },
     {
-      "title": "pot",
+      "title": "85858",
       "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1621948091252,
+      "date": 1622190057094,
       "id": 51
     },
     {
-      "title": "poi",
-      "isDone": true,
+      "title": "wqe",
+      "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1621948191609,
+      "date": 1622190282940,
       "id": 52
     },
     {
-      "title": "585858уку",
+      "title": "wqe",
       "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1621948742038,
+      "date": 1622190282940,
       "id": 53
     },
     {
-      "title": "789",
+      "title": "wqe",
       "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1622098273987,
+      "date": 1622190282940,
       "id": 54
     },
     {
-      "title": "Make video",
-      "isDone": true,
+      "title": "wqeqweq",
+      "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1622098476589,
+      "date": 1622190282940,
       "id": 55
     },
     {
-      "title": "Dance with sister",
-      "isDone": true,
+      "title": "585",
+      "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1622100661991,
+      "date": 1622196189336,
       "id": 56
     },
     {
-      "title": "Go to store",
+      "title": "58585",
       "isDone": false,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
-      "date": 1622101511417,
+      "date": 1622196243050,
       "id": 57
-    },
-    {
-      "title": "qqwewe",
-      "isDone": false,
-      "isEdit": false,
-      "categoryID": null,
-      "isFavorite": false,
-      "date": 1622101511417,
-      "id": 58
-    },
-    {
-      "title": "88",
-      "isDone": false,
-      "isEdit": false,
-      "categoryID": null,
-      "isFavorite": false,
-      "date": 1622119039890,
-      "id": 59
-    },
-    {
-      "title": "88",
-      "isDone": false,
-      "isEdit": false,
-      "categoryID": null,
-      "isFavorite": false,
-      "date": 1622119039890,
-      "id": 60
-    },
-    {
-      "title": "88weqw",
-      "isDone": false,
-      "isEdit": false,
-      "categoryID": null,
-      "isFavorite": false,
-      "date": 1622119374312,
-      "id": 61
-    },
-    {
-      "title": "88",
-      "isDone": false,
-      "isEdit": false,
-      "categoryId": 1,
-      "date": 1622124045571,
-      "isFavorite": false,
-      "id": 62
     }
   ],
   "defaultCategory": {
@@ -509,11 +464,11 @@
   },
   "categories": [
     {
-      "name": "Favorite6",
-      "color": "yellowgreen",
-      "icon": "thumb_up",
+      "name": "5858",
+      "color": "black",
+      "icon": "pets",
       "isEdit": false,
-      "id": 1
+      "id": 2
     }
   ]
 }

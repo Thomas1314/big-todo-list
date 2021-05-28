@@ -3,7 +3,6 @@ import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
-import { List } from './../components/TaskList';
 import DateFnsUtils from '@date-io/moment';
 import { useStyles } from './CompletedTasks.styles';
 import { Grid } from '@material-ui/core';

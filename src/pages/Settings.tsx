@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Select } from '@material-ui/core';
-import { Icon } from './../components/Icon';
-import { CategoriesList } from './../components/CategoriesList';
-import { CategoryCreator } from './../components/CategoryCreator';
+import { Icon } from '../components/Icon';
+import { CategoriesList } from '../components/CategoriesList';
+import { CategoryCreator } from '../components/CategoryCreator';
 import {
   getCategoriesFromState,
   selectDefaultCategoryID,
@@ -16,17 +16,18 @@ import {
   updateDefaultCategory,
 } from '../redux/actions';
 import useStyles from './Settings.styles';
+import { Colors, Icons } from '../api/api';
 
-export const Settings = () => {
+export const Settings: React.FC = () => {
   const classes = useStyles();
   const categories = useSelector(getCategoriesFromState);
   const categoryId = useSelector(selectDefaultCategoryID);
-  const [category, setCategory] = useState(categoryId);
-  const [opened, setOpened] = useState(false);
+  const [category, setCategory] = useState<number | null>(categoryId);
+  const [opened, setOpened] = useState<boolean>(false);
   const [edit, setEdit] = useState(false);
-  const [editCategoryId, setEditCategoryId] = useState(null);
-  const [button, setButton] = useState('black');
-  const [choosesIcon, setChoosesIcon] = useState('home');
+  const [editCategoryId, setEditCategoryId] = useState<number | null>(null);
+  const [button, setButton] = useState<Colors>('black');
+  const [choosesIcon, setChoosesIcon] = useState<Icons>('home');
 
   const dispatch = useDispatch();
 
@@ -46,9 +47,11 @@ export const Settings = () => {
     setOpened(false);
   };
 
-  const handleChangeCategory = (event) => {
-    dispatch(actions.setCategory(event.target.value));
-    dispatch(updateDefaultCategory(event.target.value));
+  const handleChangeCategory = (
+    event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
+  ) => {
+    dispatch(actions.setCategory(event.target.value as number));
+    dispatch(updateDefaultCategory(event.target.value as number));
   };
 
   return (

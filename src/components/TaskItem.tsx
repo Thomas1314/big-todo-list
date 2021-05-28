@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Grid, Paper, TextField } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import { Delete } from '@material-ui/icons';
@@ -9,7 +9,26 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { StyledButton } from './TaskButton';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import { useStyles } from './TaskItem.styles';
+/* import { useStyles } from './TaskItem.styles'; */
+import { CategoryType } from '../types/types';
+
+export type TaskType = {
+  title: string;
+  isDone: boolean;
+  isEdit: boolean;
+  id: number;
+  isFavorite: boolean;
+  categoryID: number;
+  date: number;
+};
+
+export type PropsType = {
+  task: TaskType;
+  categories: CategoryType[];
+  isListDone: boolean;
+  setEnd: (end: number) => void;
+  end: number;
+};
 
 const styles = {
   Icon: {
@@ -25,9 +44,9 @@ const styles = {
   },
 };
 
-const TaskItem = ({ task, categories, isListDone }) => {
+const TaskItem: React.FC<PropsType> = ({ task, categories, isListDone }) => {
   const dispatch = useDispatch();
-  const classes = useStyles();
+  /* const classes = useStyles(); */
 
   const changedTaskText = useSelector(getChangedTaskText);
 
@@ -36,7 +55,7 @@ const TaskItem = ({ task, categories, isListDone }) => {
     id: task.id,
   };
 
-  const editHandleEnter = (event) => {
+  const editHandleEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Enter') {
       dispatch(
         updateTask({
@@ -64,7 +83,9 @@ const TaskItem = ({ task, categories, isListDone }) => {
     dispatch(actions.changeFavoriteStatus(task.id));
   };
 
-  const inputTextChanger = (event) => {
+  const inputTextChanger = (
+    event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     const { value } = event.target;
     const text = value;
     dispatch(actions.updateEditTaskText(text));
@@ -89,9 +110,8 @@ const TaskItem = ({ task, categories, isListDone }) => {
 
   const deleteChosenTask = () => dispatch(deleteTask(task.id));
 
-  const enterHandler = (event) =>
+  const enterHandler = (event: React.KeyboardEvent<HTMLDivElement>) =>
     changedTaskText.length > 0 ? editHandleEnter(event) : null;
-  debugger;
   return (
     <Grid item xs={12}>
       <Paper elevation={2} style={styles.Paper}>

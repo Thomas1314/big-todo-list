@@ -1,4 +1,9 @@
-export const navTabs = [
+export type LinksType = {
+  to: string;
+  title: string;
+};
+
+export const navTabs: LinksType[] = [
   {
     to: '/todo',
     title: 'Main',

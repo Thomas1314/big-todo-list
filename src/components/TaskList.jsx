@@ -21,7 +21,6 @@ export const List = ({ tasks, end, setEnd, categories, isListDone }) => {
     end <= tasks.length ? setHasMore(true) : setHasMore(false);
     setTasksLength(tasks.length);
   }, [tasks.length, end]); */
-
   return (
     <Grid container>
       {/* <InfiniteScroll

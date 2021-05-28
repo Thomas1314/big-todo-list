@@ -20,8 +20,8 @@ const ListHook = () => {
   const endNumber = useSelector(getEndNumber);
 
   useEffect(() => {
-    // dispatch(getCategories());
-    // dispatch(getDefaultCategory());
+    dispatch(getCategories());
+    dispatch(getDefaultCategory());
   }, []);
 
   return {

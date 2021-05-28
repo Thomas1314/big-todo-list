@@ -1,60 +1,76 @@
-import axios from "axios";
+import axios from 'axios';
+import { TaskType } from '../components/TaskItem';
+import {
+  CategoryDataType,
+  CategoryType,
+  NewCategoryParamsType,
+  newTaskParamsType,
+  ParamsType,
+  updateCategoryParamsType,
+  UpdateCategoryParamsType,
+  UpdateTaskType,
+} from '../types/types';
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: "http://localhost:3000/" /* `${process.env.REACT_APP_URL}` */,
+  baseURL: 'http://localhost:3000/' /* `${process.env.REACT_APP_URL}` */,
 });
 
 const limit = 50;
 
-export type Colors = "yellowgreen" | "yellow" | "black" | "";
-export type Icons = "acnchor" | "home" | "thumb_up" | "";
+export type Colors = 'yellowgreen' | 'yellow' | 'black' | '';
+export type Icons = 'pets' | 'home' | 'nightlight_round' | '';
 
 export const API = {
-  getTasks: (params) => {
+  getTasks: (Params: ParamsType) => {
     instance
-      .get(
-        `tasks?date_gte=${params.dateFrom}&date_lte=${params.dateTo}&${params.searchString}&isDone=${params.isListDone}&_start=0&_end=${params.end}&_limit=${limit}`
+      .get<Array<TaskType>>(
+        `tasks?date_gte=${Params.dateFrom}&date_lte=${Params.dateTo}&${Params.searchString}&isDone=${Params.isListDone}&_start=0&_end=${Params.end}&_limit=${limit}`
       )
       .then((response) => response.data);
   },
 
-  deleteTask(id) {
+  deleteTask(id: number) {
     instance.delete(`/tasks/${id}`);
   },
 
-  addTask: (NewTaskParams) => instance.post("/tasks/", NewTaskParams),
+  addTask: (newTaskParams: newTaskParamsType) =>
+    instance.post<TaskType>('/tasks/', newTaskParams),
 
-  updateTask: (updateTaskParams) => {
-    instance.patch(`/tasks/${updateTaskParams.id}`, {
+  updateTask: (updateTaskParams: UpdateTaskType) => {
+    instance.patch<CategoryType>(`/tasks/${updateTaskParams.id}`, {
       title: updateTaskParams.title,
       isDone: updateTaskParams.isDone,
       isFavorite: updateTaskParams.isFavorite,
     });
   },
 
-  updateCategoryText: (updateCategoryParams) => {
-    instance.patch(`/categories/${updateCategoryParams.id}`, {
+  updateCategoryText: (updateCategoryParams: updateCategoryParamsType) => {
+    instance.patch<CategoryType>(`/categories/${updateCategoryParams.id}`, {
       name: updateCategoryParams.name,
     });
   },
 
   getCategories: () =>
-    instance.get("/categories").then((response) => response.data),
+    instance
+      .get<Array<CategoryType>>('/categories')
+      .then((response) => response.data),
 
   getDefaultCategory: () =>
-    instance.get("/defaultCategory").then((response) => response.data.id),
+    instance
+      .get<CategoryDataType>('/defaultCategory')
+      .then((response) => response.data.id),
 
-  deleteCategory: (id) => instance.delete(`/categories/${id}`),
+  deleteCategory: (id: number) => instance.delete(`/categories/${id}`),
 
-  updateCategory: ({ id, icon, color }) => {
-    instance.patch(`/categories/${id}`, { icon, color });
+  updateCategory: ({ id, icon, color }: UpdateCategoryParamsType) => {
+    instance.patch<CategoryType>(`/categories/${id}`, { icon, color });
   },
 
-  updateDefaultCategory: (id) => {
-    instance.put("/defaultCategory", { id });
+  updateDefaultCategory: (id: number | undefined) => {
+    instance.put<CategoryType>('/defaultCategory', { id });
   },
 
-  addCategory: (newCategoryParams) =>
-    instance.post("/categories", newCategoryParams),
+  addCategory: (newCategoryParams: NewCategoryParamsType) =>
+    instance.post<CategoryType>('/categories', newCategoryParams),
 };
