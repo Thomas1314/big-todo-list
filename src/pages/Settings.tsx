@@ -7,7 +7,7 @@ import { CategoriesList } from '../components/CategoriesList';
 import { CategoryCreator } from '../components/CategoryCreator';
 import {
   getCategoriesFromState,
-  selectDefaultCategoryID,
+  selectDefaultCategoryId,
 } from '../redux/selectors/selectors';
 import {
   actions,
@@ -21,7 +21,7 @@ import { Colors, Icons } from '../api/api';
 export const Settings: React.FC = () => {
   const classes = useStyles();
   const categories = useSelector(getCategoriesFromState);
-  const categoryId = useSelector(selectDefaultCategoryID);
+  const categoryId = useSelector(selectDefaultCategoryId);
   const [category, setCategory] = useState<number | null>(categoryId);
   const [opened, setOpened] = useState<boolean>(false);
   const [edit, setEdit] = useState(false);

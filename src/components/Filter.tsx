@@ -5,7 +5,22 @@ import { useSelector } from 'react-redux';
 import { getCategoriesFromState } from '../redux/selectors/selectors';
 import { Icon } from './Icon';
 
-const Filter = ({
+type SwitchesType = {
+  title: string;
+  checked: boolean;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+type FilterType = {
+  onNameSortChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onDateSortChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  nameSort: boolean;
+  dateSort: boolean;
+  categoryId: string | string[] | null;
+  setCategoryId: (categoryId: string | string[] | null) => void;
+};
+
+const Filter: React.FC<FilterType> = ({
   onNameSortChange,
   onDateSortChange,
   nameSort,
@@ -24,13 +39,15 @@ const Filter = ({
     setOpened(false);
   };
 
-  const handleChangeCategory = (event) => {
+  const handleChangeCategory = (
+    event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
+  ) => {
     event.target.value !== 51
       ? setCategoryId(`${event.target.value}`)
       : setCategoryId(null);
   };
 
-  const completedTasksSwitches = [
+  const completedTasksSwitches: SwitchesType[] = [
     {
       title: 'Sort Task by date',
       checked: dateSort,
@@ -50,6 +67,7 @@ const Filter = ({
           onOpen={onOpen}
           onClose={onClose}
           onChange={handleChangeCategory}
+          value={categoryId}
         >
           {categories.map(({ id, color, icon, name }) => (
             <MenuItem key={id} value={id}>

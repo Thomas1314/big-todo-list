@@ -21,64 +21,39 @@ export const actions = {
     ({ type: 'UPDATE_EDIT_TASK_TEXT', text } as const),
 
   updateEditCategoryText: (text: string) =>
-    ({
-      type: 'UPDATE_EDIT_CATEGORY_TEXT',
-      text,
-    } as const),
+    ({ type: 'UPDATE_EDIT_CATEGORY_TEXT', text } as const),
 
   updateCategoryText: (text: string) =>
     ({ type: 'UPDATE_CATEGORY_TEXT', text } as const),
 
   editTaskText: (updateTaskParams: UpdateTaskParamsType) =>
-    ({
-      type: 'EDIT_TASK_TEXT',
-      updateTaskParams,
-    } as const),
+    ({ type: 'EDIT_TASK_TEXT', updateTaskParams } as const),
 
   editCategoryText: (updateCategoryParams: updateCategoryParamsType) =>
-    ({
-      type: 'EDIT_CATEGORY_TEXT',
-      updateCategoryParams,
-    } as const),
+    ({ type: 'EDIT_CATEGORY_TEXT', updateCategoryParams } as const),
 
   deleteTask: (id: number) => ({ type: 'DELETE_TASK', id } as const),
 
   deleteCategory: (id: number) => ({ type: 'DELETE_CATEGORY', id } as const),
 
   changeTaskStatus: (id: number, isListDone: boolean) =>
-    ({
-      type: 'CHANGE_TASK_STATUS',
-      id,
-      isListDone,
-    } as const),
+    ({ type: 'CHANGE_TASK_STATUS', id, isListDone } as const),
 
   changeFavoriteStatus: (id: number) =>
-    ({
-      type: 'CHANGE_FAVORITE_STATUS',
-      id,
-    } as const),
+    ({ type: 'CHANGE_FAVORITE_STATUS', id } as const),
 
-  editCategoryIcon: (UpdateCategoryParams: UpdateCategoryParamsType) =>
-    ({
-      type: 'EDIT_CATEGORY_ICON',
-      UpdateCategoryParams,
-    } as const),
+  editCategoryIcon: (updateCategoryParams: UpdateCategoryParamsType) =>
+    ({ type: 'EDIT_CATEGORY_ICON', updateCategoryParams } as const),
 
-  addNewTask: (task: TaskType) => ({ type: 'ADD_NEW_TASK', task }),
+  addNewTask: (task: TaskType) => ({ type: 'ADD_NEW_TASK', task } as const),
 
   addNewCategory: (category: CategoryType) =>
-    ({
-      type: 'ADD_NEW_CATEGORY',
-      category,
-    } as const),
+    ({ type: 'ADD_NEW_CATEGORY', category } as const),
 
-  changeHandler: (id: number) => ({ type: 'CHANGE_HANDLER', id }),
+  changeHandler: (id: number) => ({ type: 'CHANGE_HANDLER', id } as const),
 
   changeCategoryHandler: (id: number) =>
-    ({
-      type: 'CHANGE_CATEGORY_HANDLER',
-      id,
-    } as const),
+    ({ type: 'CHANGE_CATEGORY_HANDLER', id } as const),
 
   setTasks: (tasks: Array<TaskType>) => ({ type: 'SET_TASKS', tasks } as const),
 
@@ -86,18 +61,12 @@ export const actions = {
     ({ type: 'SET_DONE_TASKS', tasks } as const),
 
   setUnicCategories: (categories: Array<CategoryType>) =>
-    ({
-      type: 'SET_UNIC_CATEGORIES',
-      categories,
-    } as const),
+    ({ type: 'SET_UNIC_CATEGORIES', categories } as const),
 
   setCategory: (id: number) => ({ type: 'SET_CATEGORY', id } as const),
 
   toggleIsFetching: (isFetching: boolean) =>
-    ({
-      type: 'TOGGLE_IS_FETCHING',
-      isFetching,
-    } as const),
+    ({ type: 'TOGGLE_IS_FETCHING', isFetching } as const),
 };
 
 export const getTasks =
@@ -143,7 +112,6 @@ export const deleteCategory =
 export const addTask =
   (newTaskParams: newTaskParamsType): ThunkType =>
   async (dispatch) => {
-    debugger;
     const response = await API.addTask(newTaskParams);
     dispatch(actions.addNewTask(response.data));
   };

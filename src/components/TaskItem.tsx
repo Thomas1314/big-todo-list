@@ -9,7 +9,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { StyledButton } from './TaskButton';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-/* import { useStyles } from './TaskItem.styles'; */
 import { CategoryType } from '../types/types';
 
 export type TaskType = {
@@ -18,7 +17,7 @@ export type TaskType = {
   isEdit: boolean;
   id: number;
   isFavorite: boolean;
-  categoryID: number;
+  categoryId: number;
   date: number;
 };
 
@@ -46,7 +45,6 @@ const styles = {
 
 const TaskItem: React.FC<PropsType> = ({ task, categories, isListDone }) => {
   const dispatch = useDispatch();
-  /* const classes = useStyles(); */
 
   const changedTaskText = useSelector(getChangedTaskText);
 
@@ -121,10 +119,10 @@ const TaskItem: React.FC<PropsType> = ({ task, categories, isListDone }) => {
         <Checkbox onClick={updateCategoryHandler} checked={task.isDone} />
         <div style={{ padding: '10px' }}>
           {categories.map((category) => {
-            if (category.id === task.categoryID) {
+            if (category.id === task.categoryId) {
               return (
                 <span
-                  key={task.categoryID}
+                  key={task.categoryId}
                   className="material-icons"
                   style={{
                     color: category.color,

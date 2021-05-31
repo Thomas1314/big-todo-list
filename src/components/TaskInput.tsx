@@ -7,26 +7,36 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   getCategoriesFromState,
   getNewTaskText,
-  selectDefaultCategoryID,
+  selectDefaultCategoryId,
 } from '../redux/selectors/selectors';
 import { Select } from '@material-ui/core';
 import { Icon } from './Icon';
 import { useStyles } from './TaskInput.styles';
+import { newTaskParamsType } from '../types/types';
 
-const TaskInput = () => {
+/* export type InputPropsType = {
+  onKeyPress: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+  value: string;
+  onChange: (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => void;
+  placeholder: string;
+}; */
+
+const TaskInput: React.FC = () => {
   const classes = useStyles();
 
   const newTaskText = useSelector(getNewTaskText);
   const categories = useSelector(getCategoriesFromState);
-  const categoryID = useSelector(selectDefaultCategoryID);
-  const [open, setOpen] = useState(false);
-  const [category, setCategory] = useState(categoryID);
+  const categoryId = useSelector(selectDefaultCategoryId);
+  const [open, setOpen] = useState<boolean>(false);
+  const [category, setCategory] = useState<number | null>(categoryId);
   const [taskDate, setTaskDate] = useState(new Date(Date.now()));
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setCategory(categoryID);
-  }, []);
+    setCategory(categoryId);
+  }, [categoryId]);
 
   const onOpen = () => {
     setOpen(true);
@@ -36,29 +46,33 @@ const TaskInput = () => {
     setOpen(false);
   };
 
-  const newTaskParams = {
+  const newTaskParams: newTaskParamsType = {
     title: newTaskText,
     isDone: false,
     isEdit: false,
-    categoryID: categoryID,
+    categoryId: categoryId,
     isFavorite: false,
     date: taskDate.valueOf(),
   };
 
-  const addHandleEnter = (event) => {
+  const addHandleEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (newTaskText && newTaskText.length < 30 && event.key === 'Enter') {
       dispatch(addTask(newTaskParams));
     }
   };
 
-  const inputChange = (event) => {
+  const inputChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     const { value } = event.target;
     const text = value;
     dispatch(actions.updateNewMessageText(text));
   };
 
-  const handleChangeCategory = (event) => {
-    dispatch(actions.setCategory(event.target.value));
+  const handleChangeCategory = (
+    event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
+  ) => {
+    dispatch(actions.setCategory(event.target.value as number));
   };
   return (
     <div className={classes.todoForm}>

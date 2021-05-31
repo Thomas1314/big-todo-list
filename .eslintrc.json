@@ -1,7 +1,27 @@
 {
-  "extends": ["react-app", "plugin:prettier/recommended"],
-  "plugins": ["prettier"],
+  "extends": [
+    "react-app", 
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "prettier",
+    "@typescript-eslint",
+    "react"
+  ],
   "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
+    "react/prop-types": "off",
+    "react/display-name": "off",
     "prettier/prettier": [
       "error",
       {

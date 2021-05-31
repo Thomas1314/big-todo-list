@@ -11,7 +11,7 @@ interface InitialStateType {
   editItem: boolean;
   isFetching: boolean;
   categories: Array<CategoryType>;
-  categoryID: number | null;
+  categoryId: number | null;
   categoriesName: string;
   endNumber: number;
 }
@@ -25,7 +25,7 @@ const initialState: InitialStateType = {
   isFetching: false,
   editItem: false,
   categories: [],
-  categoryID: null,
+  categoryId: null,
   categoriesName: '',
   endNumber: 8,
 };
@@ -111,7 +111,7 @@ export const reducer = (
     case 'SET_CATEGORY': {
       return {
         ...state,
-        categoryID: action.id,
+        categoryId: action.id,
       };
     }
     case 'CHANGE_TASK_STATUS': {

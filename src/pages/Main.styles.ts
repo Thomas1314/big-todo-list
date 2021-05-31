@@ -20,4 +20,10 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '350px',
   },
+  Paper: {
+    padding: 20,
+    margin: 'auto',
+    textAlign: 'center',
+    width: 500,
+  },
 }));

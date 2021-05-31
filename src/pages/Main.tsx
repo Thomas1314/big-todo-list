@@ -5,11 +5,11 @@ import {
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
 import TaskInput from '../components/TaskInput';
-import { List } from './../components/TaskList';
 import { Paper, Grid } from '@material-ui/core';
 import DateFnsUtils from '@date-io/moment';
 import { useStyles } from './Main.styles';
 import { ListWrapper } from '../components/TaskListWrapper';
+import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
 const styles = {
   Paper: {
@@ -20,23 +20,25 @@ const styles = {
   },
 };
 
-export const Main = () => {
+type DateType = MaterialUiPickersDate | null;
+
+export const Main: React.FC = () => {
   const classes = useStyles();
 
-  const [taskDate, setTaskDate] = useState(new Date(Date.now()));
-  const [selectedDateFrom, setSelectedDateFrom] = useState(null);
+  const [selectedDateFrom, setSelectedDateFrom] =
+    useState<DateType | null>(null);
 
-  const [selectedDateTo, setSelectedDateTo] = useState(null);
+  const [selectedDateTo, setSelectedDateTo] = useState<DateType | null>(null);
 
-  const [selectDateFrom, setSelectDateFrom] = useState(null);
+  const [selectDateFrom, setSelectDateFrom] = useState<DateType | null>(null);
 
-  const [selectDateTo, setSelectDateTo] = useState(null);
+  const [selectDateTo, setSelectDateTo] = useState<DateType | null>(null);
 
-  const handleDateFromChange = (date) => {
+  const handleDateFromChange = (date: DateType | null) => {
     setSelectedDateFrom(date);
   };
 
-  const handleDateToChange = (date) => {
+  const handleDateToChange = (date: DateType | null) => {
     setSelectedDateTo(date);
   };
 
@@ -89,12 +91,12 @@ export const Main = () => {
       </Grid>
 
       <Grid item xs={12}>
-        <Paper style={styles.Paper}>
+        <Paper className={classes.Paper}>
           <TaskInput />
         </Paper>
       </Grid>
 
-      <Grid item xs={12} style={styles.Paper}>
+      <Grid item xs={12} className={classes.Paper}>
         <Grid container>
           <ListWrapper
             isListDone={false}

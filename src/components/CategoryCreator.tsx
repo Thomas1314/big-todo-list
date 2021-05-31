@@ -11,8 +11,20 @@ import colors from '../utils/colors';
 import icons from '../utils/icons';
 import { Icon } from './Icon';
 import { actions, addCategory, updateCategory } from '../redux/actions';
+import { Colors, Icons } from '../api/api';
 
-export const CategoryCreator = ({
+type CategoryCreatorType = {
+  edit: boolean;
+  editCategoryId: number | null;
+  setEdit: (edit: boolean) => void;
+  setEditCategoryId: (id: number | null) => void;
+  setButton: (button: Colors) => void;
+  setChoosesIcon: (Icon: Icons) => void;
+  button: Colors;
+  choosesIcon: Icons;
+};
+
+export const CategoryCreator: React.FC<CategoryCreatorType> = ({
   edit,
   editCategoryId,
   setEdit,
@@ -28,25 +40,27 @@ export const CategoryCreator = ({
   const categoriesName = useSelector(getCategoriesName);
   const categories = useSelector(getCategoriesFromState);
 
-  const [categoryColor, setCategoryColor] = useState('black');
-  const [categoryIcon, setCategoryIcon] = useState('home');
-  const [existSameCat, setExistSameCat] = useState(false);
+  const [categoryColor, setCategoryColor] = useState<Colors>('black');
+  const [categoryIcon, setCategoryIcon] = useState<Icons>('home');
+  const [existSameCat, setExistSameCat] = useState<boolean>(false);
 
   useEffect(() => {
     setCategoryColor(button);
     setCategoryIcon(choosesIcon);
   }, [button, choosesIcon]);
 
-  const onUpdateCategoryName = (event) => {
+  const onUpdateCategoryName = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     const text = event.target.value;
     dispatch(actions.updateCategoryText(text));
   };
 
-  const onUpdateCategoryColor = (color) => {
+  const onUpdateCategoryColor = (color: Colors) => {
     setCategoryColor(color);
   };
 
-  const onUpdateCategoryIcon = (icon) => {
+  const onUpdateCategoryIcon = (icon: Icons) => {
     setCategoryIcon(icon);
   };
 
@@ -84,7 +98,7 @@ export const CategoryCreator = ({
     setEditCategoryId(null);
   };
 
-  const AddHandleEnter = (event) => {
+  const AddHandleEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (
       categoriesName &&
       categoriesName.length <= 10 &&

@@ -16,7 +16,7 @@ type ListWrapperType = {
   isListDone: boolean;
   selectedDateFrom: DateType | null;
   selectedDateTo: DateType | null;
-}
+};
 
 export const ListWrapper: React.FC<ListWrapperType> = ({
   isListDone,
@@ -26,24 +26,24 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
   const classes = useStyles();
   const isFetching = useSelector(getIsFetching);
   const locationPath = useLocation();
-  const parsed = queryString.parse(window.location.search);
+  const parsed = queryString.parse(location.search);
 
-  const [dateSort, setDateSort] = useState(() => {
+  const [dateSort, setDateSort] = useState<boolean>(() => {
     return parsed._sort === ('isFavorite,date' || 'isFavorite,date,title');
   });
 
-  const [nameSort, setNameSort] = useState(() => {
+  const [nameSort, setNameSort] = useState<boolean>(() => {
     return parsed._sort === ('isFavorite,date' || 'isFavorite,date,title');
   });
 
-  const [categoryId, setCategoryId] = useState(() => {
+  const [categoryId, setCategoryId] = useState<string | string[] | null>(() => {
     return parsed.categoryId;
   });
 
   const { tasks, unDoneTasks, categories, history, endNumber, dispatch } =
     ListHook();
 
-  const [end, setEnd] = useState(endNumber);
+  const [end, setEnd] = useState<number>(endNumber);
 
   const dateFrom = selectedDateFrom
     ? selectedDateFrom.valueOf() - 43150000
@@ -62,7 +62,7 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
   };
 
   useEffect(() => {
-    /* parsed.categoryId ? setCategoryId(parsed.categoryId) : null; */
+    parsed.categoryId ? setCategoryId(parsed.categoryId) : null;
     switch (parsed._sort) {
       case 'isFavorite,date': {
         setDateSort(true);
@@ -109,6 +109,7 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
 
     dispatch(getTasks({ isListDone, end, searchString, dateFrom, dateTo }));
   }, [dateSort, nameSort, categoryId, end, dateFrom, dateTo]);
+  debugger;
   return (
     <div className={classes.AppCategoryChanger}>
       <Filter

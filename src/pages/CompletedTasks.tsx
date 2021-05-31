@@ -7,6 +7,7 @@ import DateFnsUtils from '@date-io/moment';
 import { useStyles } from './CompletedTasks.styles';
 import { Grid } from '@material-ui/core';
 import { ListWrapper } from '../components/TaskListWrapper';
+import { DateType } from '@date-io/type';
 
 const styles = {
   Paper: {
@@ -17,20 +18,20 @@ const styles = {
   },
 };
 
-export const CompletedTasks = () => {
+export const CompletedTasks: React.FC = () => {
   const classes = useStyles();
 
-  const [selectedDateFrom, setSelectedDateFrom] = useState(
+  const [selectedDateFrom, setSelectedDateFrom] = useState<DateType | null>(
     new Date('2021-01-01')
   );
+  const [selectedDateTo, setSelectedDateTo] = useState<DateType | null>(
+    new Date('2021-10-31')
+  );
 
-  const [selectedDateTo, setSelectedDateTo] = useState(new Date('2021-10-31'));
-
-  const handleDateFromChange = (date) => {
+  const handleDateFromChange = (date: DateType | null) => {
     setSelectedDateFrom(date);
   };
-
-  const handleDateToChange = (date) => {
+  const handleDateToChange = (date: DateType | null) => {
     setSelectedDateTo(date);
   };
 
@@ -62,7 +63,7 @@ export const CompletedTasks = () => {
         </div>
       </Grid>
 
-      <Grid item xs={12} style={styles.Paper}>
+      <Grid item xs={12} className={classes.Paper}>
         <Grid container>
           <ListWrapper
             isListDone

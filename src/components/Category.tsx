@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import Input from '@material-ui/core/Input';
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import ClearIcon from '@material-ui/icons/Clear';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
@@ -9,10 +9,21 @@ import { useStyles } from './Categories.styles';
 import { actions, deleteCategory, updateCategoryText } from '../redux/actions';
 import {
   getChangedCategoryText,
-  selectDefaultCategoryID,
+  selectDefaultCategoryId,
 } from '../redux/selectors/selectors';
+import { CategoryType, updateCategoryParamsType } from '../types/types';
+import { Colors, Icons } from '../api/api';
 
-export const Category = ({
+export type CategoryPropsType = {
+  category: CategoryType;
+  setEdit: (edit: boolean) => void;
+  setEditCategoryId: (id: number) => void;
+  editCategoryId: number | null;
+  setButton: (button: Colors) => void;
+  setChoosesIcon: (Icons: Icons) => void;
+};
+
+export const Category: React.FC<CategoryPropsType> = ({
   category,
   setEdit,
   setEditCategoryId,
@@ -31,7 +42,7 @@ export const Category = ({
   const iconClasses = useStylesSpan();
   const classes = useStyles();
   const dispatch = useDispatch();
-  const categoryId = useSelector(selectDefaultCategoryID);
+  const categoryId = useSelector(selectDefaultCategoryId);
   const changedCategoryText = useSelector(getChangedCategoryText);
 
   const updateCategoryParams = {
@@ -44,19 +55,24 @@ export const Category = ({
     setEditCategoryId(id);
   };
 
-  const inputTextChanger = (event) => {
+  const inputTextChanger = (
+    event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     const { value } = event.target;
     const text = value;
     dispatch(actions.updateEditCategoryText(text));
   };
 
-  const editHandleEnter = (event, updateCategoryParams) => {
+  const editHandleEnter = (
+    event: React.KeyboardEvent<HTMLDivElement>,
+    updateCategoryParams: updateCategoryParamsType
+  ) => {
     if (event.key === 'Enter') {
       dispatch(updateCategoryText(updateCategoryParams));
     }
   };
 
-  const enterHandler = (event) =>
+  const enterHandler = (event: React.KeyboardEvent<HTMLDivElement>) =>
     changedCategoryText.length > 0
       ? editHandleEnter(event, updateCategoryParams)
       : null;

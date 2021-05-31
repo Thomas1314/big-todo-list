@@ -2,7 +2,7 @@ import React from 'react';
 import preloader from '../../assets/images/preloader.svg';
 import { useStyles } from './Preloader.styles';
 
-const Preloader = () => {
+const Preloader: React.FC = () => {
   const classes = useStyles();
 
   return (
