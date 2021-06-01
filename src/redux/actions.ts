@@ -73,6 +73,8 @@ export const getTasks =
 (Params: ParamsType): ThunkType =>
 async (dispatch) => {
   const response = await API.getTasks(Params);
+  console.log(response);
+
   Params.isListDone
     ? dispatch(actions.setTasks(response))
     : dispatch(actions.setDoneTasks(response));

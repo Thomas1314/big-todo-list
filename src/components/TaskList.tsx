@@ -39,7 +39,7 @@ export const List: React.FC<PropsType> = ({
   }, [tasks.length, end]);
   return (
     <Grid container>
-      <InfiniteScroll
+      {/* <InfiniteScroll
         dataLength={tasksLength}
         next={() => setEnd(end + 4)}
         hasMore={hasMore}
@@ -49,7 +49,7 @@ export const List: React.FC<PropsType> = ({
             <b>You have seen it all</b>
           </p>
         }
-      >
+      > */}
         <FlipMove>
           {sortTasks.map((task) => {
             return (
@@ -64,7 +64,7 @@ export const List: React.FC<PropsType> = ({
             );
           })}
         </FlipMove>
-      </InfiniteScroll>
+      {/* </InfiniteScroll> */}
     </Grid>
   );
 };

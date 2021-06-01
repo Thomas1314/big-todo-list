@@ -26,10 +26,11 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
   const classes = useStyles();
   const isFetching = useSelector(getIsFetching);
   const locationPath = useLocation();
-  const parsed = queryString.parse(location.search);
+  const parsed = queryString.parse(window.location.search);
   const [categoryId, setCategoryId] = useState<string | string[] | null>(() => {
     return parsed.categoryId;
   });
+
   const [dateSort, setDateSort] = useState<boolean>(() => {
     return parsed._sort === ('isFavorite,date' || 'isFavorite,date,title');
   });
@@ -39,7 +40,8 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
 
   const { categories, tasks, history, endNumber, unDoneTasks, dispatch } =
     ListHook();
-
+    console.log(tasks, unDoneTasks);
+  
   const [end, setEnd] = useState<number>(endNumber);
 
   const dateFrom = selectedDateFrom
@@ -104,7 +106,6 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
 
     dispatch(getTasks({ isListDone, end, searchString, dateFrom, dateTo }));
   }, [dateSort, nameSort, categoryId, end, dateFrom, dateTo]);
-
   return (
     <div className={classes.AppCategoryChanger}>
       <Filter
