@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStyles } from './AppNavbar.styles';
 import { NavLink } from 'react-router-dom';
-import { navTabs } from './utils/navLinks';
+import { navTabs } from './utils/navTabs';
 
 export const AppNavbar = () => {
   const classes = useStyles();

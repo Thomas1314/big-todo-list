@@ -1,9 +1,9 @@
-export type LinksType = {
+export type TabsType = {
   to: string;
   title: string;
 };
 
-export const navTabs: LinksType[] = [
+export const navTabs: TabsType[] = [
   {
     to: '/todo',
     title: 'Main',

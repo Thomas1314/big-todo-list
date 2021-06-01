@@ -27,20 +27,17 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
   const isFetching = useSelector(getIsFetching);
   const locationPath = useLocation();
   const parsed = queryString.parse(location.search);
-
-  const [dateSort, setDateSort] = useState<boolean>(() => {
-    return parsed._sort === ('isFavorite,date' || 'isFavorite,date,title');
-  });
-
-  const [nameSort, setNameSort] = useState<boolean>(() => {
-    return parsed._sort === ('isFavorite,date' || 'isFavorite,date,title');
-  });
-
   const [categoryId, setCategoryId] = useState<string | string[] | null>(() => {
     return parsed.categoryId;
   });
+  const [dateSort, setDateSort] = useState<boolean>(() => {
+    return parsed._sort === ('isFavorite,date' || 'isFavorite,date,title');
+  });
+  const [nameSort, setNameSort] = useState<boolean>(() => {
+    return parsed._sort === ('isFavorite,title' || 'isFavorite,date,title');
+  });
 
-  const { tasks, unDoneTasks, categories, history, endNumber, dispatch } =
+  const { categories, tasks, history, endNumber, unDoneTasks, dispatch } =
     ListHook();
 
   const [end, setEnd] = useState<number>(endNumber);
@@ -48,7 +45,6 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
   const dateFrom = selectedDateFrom
     ? selectedDateFrom.valueOf() - 43150000
     : 1577836800000;
-
   const dateTo = selectedDateTo
     ? selectedDateTo.valueOf() + 43150000
     : 1640995200000;
@@ -56,13 +52,12 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
   const onDateSortChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDateSort(e.target.checked);
   };
-
   const onNameSortChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNameSort(e.target.checked);
   };
 
   useEffect(() => {
-    parsed.categoryId ? setCategoryId(parsed.categoryId) : null;
+    /* parsed.categoryId ? setCategoryId(parsed.categoryId) : null; */
     switch (parsed._sort) {
       case 'isFavorite,date': {
         setDateSort(true);
@@ -109,7 +104,7 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
 
     dispatch(getTasks({ isListDone, end, searchString, dateFrom, dateTo }));
   }, [dateSort, nameSort, categoryId, end, dateFrom, dateTo]);
-  debugger;
+
   return (
     <div className={classes.AppCategoryChanger}>
       <Filter
@@ -123,10 +118,10 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
       {isFetching ? <Preloader /> : null}
       <List
         tasks={!isListDone ? unDoneTasks : tasks}
-        isListDone={isListDone}
-        categories={categories}
         end={end}
         setEnd={setEnd}
+        categories={categories}
+        isListDone={isListDone}
       />
     </div>
   );
