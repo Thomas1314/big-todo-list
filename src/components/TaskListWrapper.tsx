@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { List } from './TaskList';
+import { TaskList } from './TaskList';
 import ListHook from '../hooks/ListHook';
 import { useSelector } from 'react-redux';
 import { getIsFetching } from '../redux/selectors/selectors';
@@ -11,6 +11,7 @@ import { useStyles } from './TaskListWrapper.styles';
 import Filter from './Filter';
 import Preloader from './Preloader/Preloader';
 import { DateType } from '@date-io/type';
+import { Grid } from '@material-ui/core';
 
 type ListWrapperType = {
   isListDone: boolean;
@@ -40,8 +41,8 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
 
   const { categories, tasks, history, endNumber, unDoneTasks, dispatch } =
     ListHook();
-    console.log(tasks, unDoneTasks);
-  
+  /* console.log(tasks, unDoneTasks); */
+
   const [end, setEnd] = useState<number>(endNumber);
 
   const dateFrom = selectedDateFrom
@@ -107,7 +108,7 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
     dispatch(getTasks({ isListDone, end, searchString, dateFrom, dateTo }));
   }, [dateSort, nameSort, categoryId, end, dateFrom, dateTo]);
   return (
-    <div className={classes.AppCategoryChanger}>
+    <Grid container>
       <Filter
         onDateSortChange={onDateSortChange}
         onNameSortChange={onNameSortChange}
@@ -117,13 +118,13 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
         setCategoryId={setCategoryId}
       />
       {isFetching ? <Preloader /> : null}
-      <List
+      <TaskList
         tasks={!isListDone ? unDoneTasks : tasks}
         end={end}
         setEnd={setEnd}
         categories={categories}
         isListDone={isListDone}
       />
-    </div>
+    </Grid>
   );
 };

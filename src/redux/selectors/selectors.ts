@@ -1,8 +1,7 @@
 import { AppStateType } from '../store';
 
-export const getTasksFromState = (state: AppStateType) => state.doneTasks;
-export const getDoneTasksFromState = (state: AppStateType) => state.unDoneTasks;
-
+export const getTasksFromState = (state: AppStateType) => state.unDoneTasks;
+export const getDoneTasksFromState = (state: AppStateType) => state.doneTasks;
 
 export const getNewTaskText = (state: AppStateType) => state.newTaskText;
 

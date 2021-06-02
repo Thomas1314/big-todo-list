@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getCategoriesFromState } from '../redux/selectors/selectors';
 import { Icon } from './Icon';
+import { useStyles } from './TaskListWrapper.styles';
 
 type SwitchesType = {
   title: string;
@@ -30,6 +31,7 @@ const Filter: React.FC<FilterType> = ({
 }) => {
   const [opened, setOpened] = useState(false);
   const categories = useSelector(getCategoriesFromState);
+  const classes = useStyles();
 
   const onOpen = () => {
     setOpened(true);

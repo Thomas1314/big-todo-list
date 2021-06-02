@@ -107,7 +107,6 @@ export const CategoryCreator: React.FC<CategoryCreatorType> = ({
       return !existSameCat ? dispatch(addCategory(newCategoryParams)) : null;
     }
   };
-  debugger;
   return (
     <div>
       {!edit ? (

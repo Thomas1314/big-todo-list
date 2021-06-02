@@ -22,13 +22,12 @@ export type Colors = 'yellowgreen' | 'yellow' | 'black' | '';
 export type Icons = 'pets' | 'home' | 'nightlight_round' | '';
 
 export const API = {
-  getTasks: (Params: ParamsType) => 
+  getTasks: (Params: ParamsType) =>
     instance
       .get<Array<TaskType>>(
         `tasks?date_gte=${Params.dateFrom}&date_lte=${Params.dateTo}&${Params.searchString}&isDone=${Params.isListDone}&_start=0&_end=${Params.end}&_limit=${limit}`
       )
       .then((response) => response.data),
-    
 
   deleteTask(id: number) {
     instance.delete(`/tasks/${id}`);

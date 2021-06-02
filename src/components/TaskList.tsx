@@ -14,16 +14,16 @@ type PropsType = {
   isListDone: boolean;
 };
 
-export const List: React.FC<PropsType> = ({
+export const TaskList: React.FC<PropsType> = ({
   tasks,
   end,
   setEnd,
   categories,
   isListDone,
 }) => {
-  const [sortTasks, setSortTasks] = useState<TaskType[]>(tasks);
-  const [tasksLength, setTasksLength] = useState<number>(0);
   const [hasMore, setHasMore] = useState<boolean>(true);
+  const [tasksLength, setTasksLength] = useState<number>(0);
+  const [sortTasks, setSortTasks] = useState<TaskType[]>(tasks);
 
   useEffect(() => {
     setSortTasks(
@@ -38,8 +38,8 @@ export const List: React.FC<PropsType> = ({
     setTasksLength(tasks.length);
   }, [tasks.length, end]);
   return (
-    <Grid container>
-      {/* <InfiniteScroll
+    <>
+      <InfiniteScroll
         dataLength={tasksLength}
         next={() => setEnd(end + 4)}
         hasMore={hasMore}
@@ -49,22 +49,22 @@ export const List: React.FC<PropsType> = ({
             <b>You have seen it all</b>
           </p>
         }
-      > */}
-        <FlipMove>
-          {sortTasks.map((task) => {
-            return (
-              <TaskItem
-                key={task.id}
-                task={task}
-                isListDone={isListDone}
-                setEnd={setEnd}
-                end={end}
-                categories={categories}
-              />
-            );
-          })}
-        </FlipMove>
-      {/* </InfiniteScroll> */}
-    </Grid>
+      >
+        {/* <FlipMove> */}
+        {sortTasks.map((task) => {
+          return (
+            <TaskItem
+              key={task.id}
+              task={task}
+              isListDone={isListDone}
+              setEnd={setEnd}
+              end={end}
+              categories={categories}
+            />
+          );
+        })}
+        {/* </FlipMove> */}
+      </InfiniteScroll>
+    </>
   );
 };

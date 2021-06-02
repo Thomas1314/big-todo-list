@@ -5,7 +5,7 @@
   },
   "extends": [
     "react-app", 
-    /* "plugin:prettier/recommended", */
+    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended"
   ],
@@ -18,7 +18,7 @@
     "sourceType": "module"
   },
   "plugins": [
-    /* "prettier", */
+    "prettier",
     "@typescript-eslint",
     "react"
   ],
@@ -26,14 +26,14 @@
     "@typescript-eslint/ban-ts-comment": "off",
     "react/prop-types": "off",
     "react/display-name": "off",
-    "prettier/prettier": 0
+    "prettier/prettier": 0,
 
-    /* "prettier/prettier": [
+    "prettier/prettier": [
       "error",
       {
         "singleQuote": true
       }
     ],
-    "quotes": [2, "single"] */
+    "quotes": [2, "single"]
   }
 }

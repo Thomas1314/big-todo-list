@@ -19,9 +19,5 @@ export type BaseThunkType<A extends Action = Action, R = Promise<void>> =
 
 export const store = createStore(
   reducer,
-  composeWithDevTools(
-    applyMiddleware(thunkMiddleWare)
-  )
+  composeWithDevTools(applyMiddleware(thunkMiddleWare))
 );
-
-

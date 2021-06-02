@@ -70,15 +70,13 @@ export const actions = {
 };
 
 export const getTasks =
-(Params: ParamsType): ThunkType =>
-async (dispatch) => {
-  const response = await API.getTasks(Params);
-  console.log(response);
-
-  Params.isListDone
-    ? dispatch(actions.setTasks(response))
-    : dispatch(actions.setDoneTasks(response));
-};
+  (Params: ParamsType): ThunkType =>
+  async (dispatch) => {
+    const response = await API.getTasks(Params);
+    Params.isListDone
+      ? dispatch(actions.setTasks(response))
+      : dispatch(actions.setDoneTasks(response));
+  };
 
 export const getCategories = (): ThunkType => async (dispatch) => {
   const response = await API.getCategories();

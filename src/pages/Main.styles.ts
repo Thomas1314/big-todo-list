@@ -24,6 +24,9 @@ export const useStyles = makeStyles((theme) => ({
     padding: 20,
     margin: 'auto',
     textAlign: 'center',
-    width: 500,
+    width: 580,
+  },
+  todoForm: {
+    display: 'flex',
   },
 }));
