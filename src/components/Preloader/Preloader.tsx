@@ -1,5 +1,5 @@
 import React from 'react';
-import preloader2 from '../../assets/images/preloader2.svg';
+import preloader from '../../assets/images/preloader.svg';
 import { useStyles } from './Preloader.styles';
 
 const Preloader: React.FC = () => {
@@ -7,7 +7,7 @@ const Preloader: React.FC = () => {
 
   return (
     <div className={classes.preloader}>
-      <img src={preloader2} alt="preloader" />
+      <img src={preloader} alt="preloader" />
     </div>
   );
 };

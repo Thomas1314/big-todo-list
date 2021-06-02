@@ -64,7 +64,7 @@ const Filter: React.FC<FilterType> = ({
 
   return (
     <div>
-      <div className="appCategory">
+      <div className="AppCategory">
         <Select
           onOpen={onOpen}
           onClose={onClose}
@@ -82,7 +82,7 @@ const Filter: React.FC<FilterType> = ({
           <MenuItem value={51}>Clear</MenuItem>
         </Select>
       </div>
-      <div className="appSwitches">
+      <div className="AppSwitches">
         {completedTasksSwitches.map(({ checked, onChange, title }, index) => (
           <div key={index}>
             <span>{title}</span>

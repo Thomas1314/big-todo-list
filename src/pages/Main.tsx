@@ -96,8 +96,8 @@ export const Main: React.FC = () => {
         </Paper>
       </Grid>
 
-      <Grid item xs={12} className={classes.Paper}>
-        <Grid container>
+      <Grid item xs={12}>
+        <Grid container style={{ display: 'block' }}>
           <ListWrapper
             isListDone={false}
             selectedDateFrom={selectDateFrom}

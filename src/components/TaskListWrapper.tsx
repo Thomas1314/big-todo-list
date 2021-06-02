@@ -108,7 +108,7 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
     dispatch(getTasks({ isListDone, end, searchString, dateFrom, dateTo }));
   }, [dateSort, nameSort, categoryId, end, dateFrom, dateTo]);
   return (
-    <Grid container>
+    <div className={classes.AppCategoryChanger}>
       <Filter
         onDateSortChange={onDateSortChange}
         onNameSortChange={onNameSortChange}
@@ -125,6 +125,6 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
         categories={categories}
         isListDone={isListDone}
       />
-    </Grid>
+    </div>
   );
 };

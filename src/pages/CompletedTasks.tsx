@@ -63,7 +63,7 @@ export const CompletedTasks: React.FC = () => {
         </div>
       </Grid>
 
-      <Grid item xs={12} className={classes.Paper}>
+      <Grid item xs={12}>
         <Grid container>
           <ListWrapper
             isListDone

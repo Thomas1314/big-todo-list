@@ -5,6 +5,7 @@ import FlipMove from 'react-flip-move';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { CategoryType } from '../types/types';
 import Preloader from './Preloader/Preloader';
+import { useStyles } from './TaskList.styles';
 
 type PropsType = {
   tasks: Array<TaskType>;
@@ -24,6 +25,7 @@ export const TaskList: React.FC<PropsType> = ({
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [tasksLength, setTasksLength] = useState<number>(0);
   const [sortTasks, setSortTasks] = useState<TaskType[]>(tasks);
+  const classes = useStyles();
 
   useEffect(() => {
     setSortTasks(
@@ -39,32 +41,34 @@ export const TaskList: React.FC<PropsType> = ({
   }, [tasks.length, end]);
   return (
     <>
-      <InfiniteScroll
-        dataLength={tasksLength}
-        next={() => setEnd(end + 4)}
-        hasMore={hasMore}
-        loader={<Preloader />}
-        endMessage={
-          <p style={{ textAlign: 'center' }}>
-            <b>You have seen it all</b>
-          </p>
-        }
-      >
-        {/* <FlipMove> */}
-        {sortTasks.map((task) => {
-          return (
-            <TaskItem
-              key={task.id}
-              task={task}
-              isListDone={isListDone}
-              setEnd={setEnd}
-              end={end}
-              categories={categories}
-            />
-          );
-        })}
-        {/* </FlipMove> */}
-      </InfiniteScroll>
+      <div className={classes.listScroll}>
+        <InfiniteScroll
+          dataLength={tasksLength}
+          next={() => setEnd(end + 4)}
+          hasMore={hasMore}
+          loader={<Preloader />}
+          endMessage={
+            <p style={{ textAlign: 'center' }}>
+              <b>You have seen it all</b>
+            </p>
+          }
+        >
+          {/* <FlipMove> */}
+          {sortTasks.map((task) => {
+            return (
+              <TaskItem
+                key={task.id}
+                task={task}
+                isListDone={isListDone}
+                setEnd={setEnd}
+                end={end}
+                categories={categories}
+              />
+            );
+          })}
+          {/* </FlipMove> */}
+        </InfiniteScroll>
+      </div>
     </>
   );
 };

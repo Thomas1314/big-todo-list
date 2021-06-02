@@ -37,7 +37,7 @@
     },
     {
       "title": "ц",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
@@ -73,10 +73,10 @@
     },
     {
       "title": "85858",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryID": null,
-      "isFavorite": true,
+      "isFavorite": false,
       "date": 1621599199275,
       "id": 11
     },
@@ -85,16 +85,16 @@
       "isDone": false,
       "isEdit": false,
       "categoryID": null,
-      "isFavorite": false,
+      "isFavorite": true,
       "date": 1621599237855,
       "id": 12
     },
     {
       "title": "8989898",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryID": null,
-      "isFavorite": false,
+      "isFavorite": true,
       "date": 1621599251738,
       "id": 13
     },
@@ -118,7 +118,7 @@
     },
     {
       "title": "585858",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": true,
@@ -127,10 +127,10 @@
     },
     {
       "title": "585858",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryID": null,
-      "isFavorite": false,
+      "isFavorite": true,
       "date": 1621599372606,
       "id": 17
     },
@@ -153,26 +153,8 @@
       "id": 27
     },
     {
-      "title": "wqe",
-      "isDone": false,
-      "isEdit": false,
-      "categoryId": 3,
-      "isFavorite": false,
-      "date": 1622630637388,
-      "id": 32
-    },
-    {
-      "title": "885",
-      "isDone": false,
-      "isEdit": false,
-      "categoryId": 3,
-      "isFavorite": false,
-      "date": 1622630667978,
-      "id": 33
-    },
-    {
       "title": "qwewe",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
@@ -190,10 +172,10 @@
     },
     {
       "title": "qweqweqwe",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 3,
-      "isFavorite": false,
+      "isFavorite": true,
       "date": 1622635755383,
       "id": 36
     },
@@ -202,18 +184,108 @@
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
-      "isFavorite": false,
+      "isFavorite": true,
       "date": 1622636103561,
       "id": 37
     },
     {
-      "title": "Hello",
+      "title": "58599",
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
-      "date": 1622637785985,
-      "id": 38
+      "date": 1622641482447,
+      "id": 40
+    },
+    {
+      "title": "qwe",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 3,
+      "isFavorite": true,
+      "date": 1622643370845,
+      "id": 41
+    },
+    {
+      "title": "weqweqwe",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 3,
+      "isFavorite": true,
+      "date": 1622643370845,
+      "id": 42
+    },
+    {
+      "title": "qwe",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 3,
+      "isFavorite": true,
+      "date": 1622643370845,
+      "id": 43
+    },
+    {
+      "title": "wq",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 3,
+      "isFavorite": false,
+      "date": 1622643370845,
+      "id": 44
+    },
+    {
+      "title": "e",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 3,
+      "isFavorite": false,
+      "date": 1622643370845,
+      "id": 45
+    },
+    {
+      "title": "wrwerwerwer",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 3,
+      "isFavorite": false,
+      "date": 1622643382763,
+      "id": 46
+    },
+    {
+      "title": "et",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 3,
+      "isFavorite": false,
+      "date": 1622643382763,
+      "id": 47
+    },
+    {
+      "title": "er",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 3,
+      "isFavorite": false,
+      "date": 1622643382763,
+      "id": 48
+    },
+    {
+      "title": "tre",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 3,
+      "isFavorite": false,
+      "date": 1622643382763,
+      "id": 49
+    },
+    {
+      "title": "t",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 3,
+      "isFavorite": false,
+      "date": 1622643382763,
+      "id": 50
     }
   ],
   "defaultCategory": {
@@ -223,7 +295,7 @@
     {
       "name": "5858",
       "color": "black",
-      "icon": "nightlight_round",
+      "icon": "pets",
       "isEdit": false,
       "id": 2
     },
@@ -233,6 +305,20 @@
       "icon": "pets",
       "isEdit": false,
       "id": 3
+    },
+    {
+      "name": "Books",
+      "color": "black",
+      "icon": "home",
+      "isEdit": false,
+      "id": 4
+    },
+    {
+      "name": "Favorite",
+      "color": "yellow",
+      "icon": "nightlight_round",
+      "isEdit": false,
+      "id": 5
     }
   ]
 }
