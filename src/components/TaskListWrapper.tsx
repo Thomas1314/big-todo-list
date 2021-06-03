@@ -107,6 +107,7 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
 
     dispatch(getTasks({ isListDone, end, searchString, dateFrom, dateTo }));
   }, [dateSort, nameSort, categoryId, end, dateFrom, dateTo]);
+  debugger;
   return (
     <div className={classes.AppCategoryChanger}>
       <Filter

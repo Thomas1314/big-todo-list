@@ -34,7 +34,7 @@ export const CompletedTasks: React.FC = () => {
   const handleDateToChange = (date: DateType | null) => {
     setSelectedDateTo(date);
   };
-
+  debugger;
   return (
     <Grid container spacing={0}>
       <Grid item xs={12}>
@@ -64,7 +64,7 @@ export const CompletedTasks: React.FC = () => {
       </Grid>
 
       <Grid item xs={12}>
-        <Grid container>
+        <Grid container style={{ display: 'block' }}>
           <ListWrapper
             isListDone
             selectedDateFrom={selectedDateFrom}

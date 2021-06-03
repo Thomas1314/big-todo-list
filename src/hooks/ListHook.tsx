@@ -5,6 +5,7 @@ import {
   getCategoriesFromState,
   getIsFetching,
   getEndNumber,
+  getDoneTasksFromState,
 } from '../redux/selectors/selectors';
 import { getDefaultCategory, getCategories } from '../redux/actions';
 import { useHistory } from 'react-router-dom';
@@ -13,7 +14,7 @@ const ListHook = () => {
   const history = useHistory();
 
   const dispatch = useDispatch();
-  const tasks = useSelector(getTasksFromState);
+  const tasks = useSelector(getDoneTasksFromState);
 
   const unDoneTasks = useSelector(getTasksFromState);
   const categories = useSelector(getCategoriesFromState);

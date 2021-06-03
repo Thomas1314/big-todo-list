@@ -14,15 +14,6 @@ import { Icon } from './Icon';
 import { useStyles } from './TaskInput.styles';
 import { newTaskParamsType } from '../types/types';
 
-/* export type InputPropsType = {
-  onKeyPress: (event: React.KeyboardEvent<HTMLDivElement>) => void;
-  value: string;
-  onChange: (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => void;
-  placeholder: string;
-}; */
-
 const TaskInput: React.FC = () => {
   const classes = useStyles();
 

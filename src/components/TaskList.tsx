@@ -53,20 +53,20 @@ export const TaskList: React.FC<PropsType> = ({
             </p>
           }
         >
-          {/* <FlipMove> */}
-          {sortTasks.map((task) => {
-            return (
-              <TaskItem
-                key={task.id}
-                task={task}
-                isListDone={isListDone}
-                setEnd={setEnd}
-                end={end}
-                categories={categories}
-              />
-            );
-          })}
-          {/* </FlipMove> */}
+          <FlipMove>
+            {sortTasks.map((task) => {
+              return (
+                <TaskItem
+                  key={task.id}
+                  task={task}
+                  isListDone={isListDone}
+                  setEnd={setEnd}
+                  end={end}
+                  categories={categories}
+                />
+              );
+            })}
+          </FlipMove>
         </InfiniteScroll>
       </div>
     </>
