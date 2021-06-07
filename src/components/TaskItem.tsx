@@ -104,7 +104,7 @@ const TaskItem: React.FC<PropsType> = forwardRef(
     };
 
     const enterHandler = (event: React.KeyboardEvent<HTMLDivElement>) =>
-      !changedTaskText.length ? editHandleEnter(event) : null;
+      changedTaskText.length ? editHandleEnter(event) : null;
     return (
       <div ref={ref}>
         <Paper elevation={2} className={classes.Paper}>

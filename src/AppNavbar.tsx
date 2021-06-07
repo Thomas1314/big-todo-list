@@ -8,9 +8,9 @@ export const AppNavbar = () => {
 
   return (
     <nav className={classes.navbar}>
-      <div className={classes.navbarContainer}>
+      <div className={classes.navbar_wrap}>
         {navTabs.map(({ to, title }) => (
-          <NavLink className={classes.navLinks} to={to} key={to}>
+          <NavLink className={classes.navbar_links} to={to} key={to}>
             {title}
           </NavLink>
         ))}

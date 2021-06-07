@@ -13,6 +13,7 @@ import { Select } from '@material-ui/core';
 import { Icon } from './Icon';
 import { useStyles } from './TaskInput.styles';
 import { newTaskParamsType } from '../types/types';
+import { maxLength } from '../utils/validators/validators';
 
 export const TaskInput: React.FC = () => {
   const classes = useStyles();

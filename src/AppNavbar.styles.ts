@@ -1,17 +1,17 @@
 import { makeStyles } from '@material-ui/styles';
 
-export const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles(() => ({
   navbar: {
+    display: 'flex',
     alignItems: 'center',
-    display: 'flex',
   },
-  navbarContainer: {
-    width: '500px',
+  navbar_wrap: {
     display: 'flex',
-    justifyContent: 'space-between',
     margin: 'auto',
+    width: '500px',
+    justifyContent: 'space-between',
   },
-  navLinks: {
+  navbar_links: {
     color: 'black',
     textDecoration: 'none',
     fontFamily: 'Roboto',

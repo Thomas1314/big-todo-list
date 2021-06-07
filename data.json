@@ -55,7 +55,7 @@
     },
     {
       "title": "йц",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": true,
@@ -90,20 +90,20 @@
       "id": 13
     },
     {
-      "title": "qwe",
-      "isDone": false,
-      "isEdit": false,
-      "categoryId": 3,
-      "isFavorite": false,
-      "date": 1622704411908,
-      "id": 14
-    },
-    {
-      "title": "e",
+      "title": "qwewewerer",
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": true,
+      "date": 1622704411908,
+      "id": 14
+    },
+    {
+      "title": "eytrytrytry",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 3,
+      "isFavorite": false,
       "date": 1622704411908,
       "id": 16
     },
@@ -135,7 +135,7 @@
       "id": 19
     },
     {
-      "title": "K",
+      "title": "qweqweeK",
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
@@ -144,7 +144,7 @@
       "id": 25
     },
     {
-      "title": "qwer",
+      "title": "qwerty",
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
@@ -153,11 +153,11 @@
       "id": 27
     },
     {
-      "title": "qwe",
+      "title": "qwewerr",
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
-      "isFavorite": false,
+      "isFavorite": true,
       "date": 1622714959967,
       "id": 31
     },
@@ -166,7 +166,7 @@
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
-      "isFavorite": true,
+      "isFavorite": false,
       "date": 1622714959967,
       "id": 33
     },
@@ -198,15 +198,6 @@
       "id": 41
     },
     {
-      "title": "eqr",
-      "isDone": true,
-      "isEdit": false,
-      "categoryId": 3,
-      "isFavorite": false,
-      "date": 1622715029782,
-      "id": 42
-    },
-    {
       "title": "w",
       "isDone": true,
       "isEdit": false,
@@ -217,7 +208,7 @@
     },
     {
       "title": "er",
-      "isDone": true,
+      "isDone": false,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
@@ -231,38 +222,20 @@
       "categoryId": 3,
       "isFavorite": false,
       "date": 1622715029782,
-      "id": 46
-    },
-    {
-      "title": "er",
-      "isDone": true,
-      "isEdit": false,
-      "categoryId": 3,
-      "isFavorite": false,
-      "date": 1622715029782,
       "id": 48
-    },
-    {
-      "title": "wrertert",
-      "isDone": true,
-      "isEdit": false,
-      "categoryId": 3,
-      "isFavorite": false,
-      "date": 1622717083874,
-      "id": 49
     },
     {
       "title": "ertertertertertertertertertre",
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
-      "isFavorite": false,
+      "isFavorite": true,
       "date": 1622717083874,
       "id": 50
     },
     {
       "title": "etertertertertertertrt",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
@@ -297,15 +270,6 @@
       "id": 54
     },
     {
-      "title": "кее",
-      "isDone": false,
-      "isEdit": false,
-      "categoryId": 2,
-      "isFavorite": false,
-      "date": 1622720066105,
-      "id": 55
-    },
-    {
       "title": "кцукцукцукцукущещуке",
       "isDone": false,
       "isEdit": false,
@@ -333,17 +297,8 @@
       "id": 58
     },
     {
-      "title": "Met the ",
-      "isDone": false,
-      "isEdit": false,
-      "categoryId": 2,
-      "isFavorite": false,
-      "date": 1623053841205,
-      "id": 59
-    },
-    {
       "title": "qweqwewqeqwe",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 2,
       "isFavorite": false,
@@ -352,7 +307,7 @@
     },
     {
       "title": "858585",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 2,
       "isFavorite": false,

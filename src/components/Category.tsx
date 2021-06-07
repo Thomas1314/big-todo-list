@@ -103,7 +103,6 @@ export const Category: React.FC<CategoryPropsType> = ({
               value={changedCategoryText}
               onChange={inputTextChanger}
               onKeyPress={enterHandler}
-              /* error={maxLength(сhangedCategoryText)} */
               placeholder="edit category"
             />
           ) : (

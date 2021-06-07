@@ -13,10 +13,11 @@ import {
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: 'http://localhost:3000/' /* `${process.env.REACT_APP_URL}` */,
+  baseURL: 'http://localhost:3000',
 });
+console.log(process.env);
 
-const limit = 50;
+const limit = process.env.REACT_APP_TASK_LIMIT;
 
 export type Colors = 'yellowgreen' | 'yellow' | 'black' | '';
 export type Icons = 'pets' | 'home' | 'nightlight_round' | '';

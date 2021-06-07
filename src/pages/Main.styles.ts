@@ -1,18 +1,6 @@
 import { makeStyles } from '@material-ui/styles';
 
 export const useStyles = makeStyles(() => ({
-  MainPageContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  MainPageTitle: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  MainList: {
-    marginTop: '20px',
-    padding: '30px',
-  },
   MainListDateFilter: {
     padding: '20px',
     margin: 'auto',
@@ -25,8 +13,5 @@ export const useStyles = makeStyles(() => ({
     margin: 'auto',
     textAlign: 'center',
     width: 580,
-  },
-  todoForm: {
-    display: 'flex',
   },
 }));
