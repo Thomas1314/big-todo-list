@@ -46,7 +46,7 @@
     },
     {
       "title": "qweqwe",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryID": null,
       "isFavorite": false,
@@ -55,10 +55,10 @@
     },
     {
       "title": "йц",
-      "isDone": true,
+      "isDone": false,
       "isEdit": false,
       "categoryID": null,
-      "isFavorite": false,
+      "isFavorite": true,
       "date": 1621329883055,
       "id": 9
     },
@@ -81,15 +81,6 @@
       "id": 11
     },
     {
-      "title": "85858585858",
-      "isDone": false,
-      "isEdit": false,
-      "categoryID": null,
-      "isFavorite": false,
-      "date": 1621599237855,
-      "id": 12
-    },
-    {
       "title": "8989898",
       "isDone": true,
       "isEdit": false,
@@ -100,7 +91,7 @@
     },
     {
       "title": "qwe",
-      "isDone": true,
+      "isDone": false,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
@@ -108,20 +99,11 @@
       "id": 14
     },
     {
-      "title": "qweweq",
-      "isDone": true,
-      "isEdit": false,
-      "categoryId": 3,
-      "isFavorite": false,
-      "date": 1622704411908,
-      "id": 15
-    },
-    {
       "title": "e",
-      "isDone": true,
+      "isDone": false,
       "isEdit": false,
       "categoryId": 3,
-      "isFavorite": false,
+      "isFavorite": true,
       "date": 1622704411908,
       "id": 16
     },
@@ -151,15 +133,6 @@
       "isFavorite": false,
       "date": 1622704411908,
       "id": 19
-    },
-    {
-      "title": "A",
-      "isDone": false,
-      "isEdit": false,
-      "categoryId": 3,
-      "isFavorite": false,
-      "date": 1622704783280,
-      "id": 22
     },
     {
       "title": "K",
@@ -193,7 +166,7 @@
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
-      "isFavorite": false,
+      "isFavorite": true,
       "date": 1622714959967,
       "id": 33
     },
@@ -217,7 +190,7 @@
     },
     {
       "title": "qwe",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
@@ -226,7 +199,7 @@
     },
     {
       "title": "eqr",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
@@ -235,7 +208,7 @@
     },
     {
       "title": "w",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
@@ -244,7 +217,7 @@
     },
     {
       "title": "er",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
@@ -253,7 +226,7 @@
     },
     {
       "title": "er",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
@@ -262,7 +235,7 @@
     },
     {
       "title": "er",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
@@ -271,7 +244,7 @@
     },
     {
       "title": "wrertert",
-      "isDone": false,
+      "isDone": true,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
@@ -351,22 +324,40 @@
       "id": 57
     },
     {
-      "title": "ещкешщкшещукшещукшещкуше",
+      "title": "Hello",
       "isDone": false,
       "isEdit": false,
       "categoryId": 2,
       "isFavorite": false,
-      "date": 1622720066105,
+      "date": 1623049921811,
       "id": 58
     },
     {
-      "title": "щукешукщешкущеук",
+      "title": "Met the ",
       "isDone": false,
       "isEdit": false,
       "categoryId": 2,
       "isFavorite": false,
-      "date": 1622720066105,
+      "date": 1623053841205,
       "id": 59
+    },
+    {
+      "title": "qweqwewqeqwe",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 2,
+      "isFavorite": false,
+      "date": 1623054391770,
+      "id": 60
+    },
+    {
+      "title": "858585",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 2,
+      "isFavorite": false,
+      "date": 1623056576357,
+      "id": 61
     }
   ],
   "defaultCategory": {
@@ -381,7 +372,7 @@
       "id": 2
     },
     {
-      "name": "qwew858qwewe",
+      "name": "Weekend",
       "color": "yellowgreen",
       "icon": "home",
       "isEdit": false,
@@ -389,17 +380,24 @@
     },
     {
       "name": "Books",
-      "color": "yellow",
-      "icon": "home",
+      "color": "yellowgreen",
+      "icon": "pets",
       "isEdit": false,
       "id": 4
     },
     {
-      "name": "Favorite",
+      "name": "Work",
       "color": "yellow",
       "icon": "nightlight_round",
       "isEdit": false,
       "id": 5
+    },
+    {
+      "name": "Done13",
+      "color": "black",
+      "icon": "home",
+      "isEdit": false,
+      "id": 6
     }
   ]
 }

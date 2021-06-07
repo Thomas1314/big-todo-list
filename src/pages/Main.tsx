@@ -1,21 +1,19 @@
-import { Button, Select } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
+import { Button } from '@material-ui/core';
+import React, { useState } from 'react';
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
-import TaskInput from '../components/TaskInput';
+import { TaskInput } from '../components/TaskInput';
 import { Paper, Grid } from '@material-ui/core';
-import DateFnsUtils from '@date-io/moment';
+import DateFnsUtils from '@date-io/date-fns';
 import { useStyles } from './Main.styles';
 import { ListWrapper } from '../components/TaskListWrapper';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
-import { useDispatch } from 'react-redux';
 
 type DateType = MaterialUiPickersDate | null;
 
 export const Main: React.FC = () => {
-  const dispatch = useDispatch();
   const classes = useStyles();
 
   const [selectedDateFrom, setSelectedDateFrom] =
@@ -56,7 +54,6 @@ export const Main: React.FC = () => {
               KeyboardButtonProps={{
                 'aria-label': 'change date',
               }}
-              /* style={{width: 180, marginBottom: "20px", marginRight: "20px"}} */
               disableToolbar
             />
           </MuiPickersUtilsProvider>
@@ -72,7 +69,6 @@ export const Main: React.FC = () => {
               KeyboardButtonProps={{
                 'aria-label': 'change date',
               }}
-              /* style={{width: 180, marginBottom: "20px"}} */
               disableToolbar
             />
           </MuiPickersUtilsProvider>

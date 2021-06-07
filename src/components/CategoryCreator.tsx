@@ -42,7 +42,8 @@ export const CategoryCreator: React.FC<CategoryCreatorType> = ({
 
   const [categoryColor, setCategoryColor] = useState<Colors>('black');
   const [categoryIcon, setCategoryIcon] = useState<Icons>('home');
-  const [existSameCat, setExistSameCat] = useState<boolean>(false);
+  const [isCategoryAvailable, setIsCategoryAvailable] =
+    useState<boolean>(false);
 
   useEffect(() => {
     setCategoryColor(button);
@@ -78,7 +79,7 @@ export const CategoryCreator: React.FC<CategoryCreatorType> = ({
   };
 
   useEffect(() => {
-    setExistSameCat(
+    setIsCategoryAvailable(
       categories.some(
         (category) =>
           category.icon === categoryIcon && category.color === categoryColor
@@ -104,7 +105,9 @@ export const CategoryCreator: React.FC<CategoryCreatorType> = ({
       categoriesName.length <= 10 &&
       event.key === 'Enter'
     ) {
-      return !existSameCat ? dispatch(addCategory(newCategoryParams)) : null;
+      return !isCategoryAvailable
+        ? dispatch(addCategory(newCategoryParams))
+        : null;
     }
   };
   return (
@@ -162,8 +165,8 @@ export const CategoryCreator: React.FC<CategoryCreatorType> = ({
           onClick={edit ? editCategory : addNewCategory}
           disabled={
             edit
-              ? existSameCat
-              : existSameCat ||
+              ? isCategoryAvailable
+              : isCategoryAvailable ||
                 categoriesName.length > 10 ||
                 categories.length >= 9 ||
                 categoriesName.length === 9

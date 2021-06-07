@@ -9,15 +9,6 @@ import { Grid } from '@material-ui/core';
 import { ListWrapper } from '../components/TaskListWrapper';
 import { DateType } from '@date-io/type';
 
-const styles = {
-  Paper: {
-    padding: 20,
-    margin: 'auto',
-    textAlign: 'center',
-    width: 500,
-  },
-};
-
 export const CompletedTasks: React.FC = () => {
   const classes = useStyles();
 

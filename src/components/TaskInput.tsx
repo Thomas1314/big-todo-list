@@ -14,7 +14,7 @@ import { Icon } from './Icon';
 import { useStyles } from './TaskInput.styles';
 import { newTaskParamsType } from '../types/types';
 
-const TaskInput: React.FC = () => {
+export const TaskInput: React.FC = () => {
   const classes = useStyles();
 
   const newTaskText = useSelector(getNewTaskText);
@@ -74,23 +74,23 @@ const TaskInput: React.FC = () => {
         placeholder="Todo"
         style={{ width: '90%' }}
       />
-      {/* {category !== null ? ( */}
-      <Select
-        onOpen={onOpen}
-        onClose={onClose}
-        onChange={handleChangeCategory}
-        value={category}
-      >
-        {categories.map(({ id, color, icon, name }) => (
-          <MenuItem key={id} value={id}>
-            <>
-              <Icon color={color} icon={icon} />
-              {open && name}
-            </>
-          </MenuItem>
-        ))}
-      </Select>
-      {/*  ) : null} */}
+      {category !== null ? (
+        <Select
+          onOpen={onOpen}
+          onClose={onClose}
+          onChange={handleChangeCategory}
+          value={category}
+        >
+          {categories.map(({ id, color, icon, name }) => (
+            <MenuItem key={id} value={id}>
+              <>
+                <Icon color={color} icon={icon} />
+                {open && name}
+              </>
+            </MenuItem>
+          ))}
+        </Select>
+      ) : null}
       <Button
         type="submit"
         disabled={newTaskText.length === 0 || newTaskText.length > 30}
@@ -108,5 +108,3 @@ const TaskInput: React.FC = () => {
     </div>
   );
 };
-
-export default TaskInput;

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, forwardRef, LegacyRef } from 'react';
-import { Grid, Paper, TextField } from '@material-ui/core';
+import { Paper, TextField } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import { Delete } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -104,7 +104,7 @@ const TaskItem: React.FC<PropsType> = forwardRef(
     };
 
     const enterHandler = (event: React.KeyboardEvent<HTMLDivElement>) =>
-      changedTaskText.length > 0 ? editHandleEnter(event) : null;
+      !changedTaskText.length ? editHandleEnter(event) : null;
     return (
       <div ref={ref}>
         <Paper elevation={2} className={classes.Paper}>
@@ -140,26 +140,26 @@ const TaskItem: React.FC<PropsType> = forwardRef(
               onKeyPress={enterHandler}
             />
           ) : (
-            //(<span>{task.title}</span>)
             <span onClick={changeTaskHandler}>{task.title}</span>
           )}
-          {!isListDone ? (
-            <StyledButton
-              className="material-icons"
-              onClick={updateTaskFavorite}
+          <div className={classes.taskButtons}>
+            {!isListDone ? (
+              <StyledButton
+                className="material-icons"
+                onClick={updateTaskFavorite}
+              >
+                {task.isFavorite ? <StarIcon /> : <StarBorderIcon />}
+              </StyledButton>
+            ) : null}
+
+            <IconButton
+              color="secondary"
+              aria-label="Delete"
+              onClick={deleteChosenTask}
             >
-              {task.isFavorite ? <StarIcon /> : <StarBorderIcon />}
-            </StyledButton>
-          ) : null}
-          {/* {!isListDone ? ( */}
-          <IconButton
-            color="secondary"
-            aria-label="Delete"
-            onClick={deleteChosenTask}
-          >
-            <Delete fontSize="small" />
-          </IconButton>
-          {/* ) : null} */}
+              <Delete fontSize="small" />
+            </IconButton>
+          </div>
         </Paper>
       </div>
     );

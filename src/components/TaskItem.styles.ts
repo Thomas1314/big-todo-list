@@ -46,9 +46,6 @@ export const useStyles = makeStyles(() => ({
     boxSizing: 'border-box',
   },
   taskButtons: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginRight: '5px',
+    marginLeft: 'auto',
   },
 }));

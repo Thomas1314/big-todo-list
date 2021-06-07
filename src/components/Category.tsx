@@ -13,6 +13,7 @@ import {
 } from '../redux/selectors/selectors';
 import { CategoryType, updateCategoryParamsType } from '../types/types';
 import { Colors, Icons } from '../api/api';
+import { maxLength } from './../utils/validators/validators';
 
 export type CategoryPropsType = {
   category: CategoryType;
@@ -47,10 +48,10 @@ export const Category: React.FC<CategoryPropsType> = ({
 
   const updateCategoryParams = {
     name: changedCategoryText,
-    id: id,
+    id,
   };
 
-  const deleteChoosedCategory = () => {
+  const deleteChosenCategory = () => {
     dispatch(deleteCategory(id));
     setEditCategoryId(id);
   };
@@ -102,7 +103,7 @@ export const Category: React.FC<CategoryPropsType> = ({
               value={changedCategoryText}
               onChange={inputTextChanger}
               onKeyPress={enterHandler}
-              /* error={maxLength(ChangedCategoryText)} */
+              /* error={maxLength(сhangedCategoryText)} */
               placeholder="edit category"
             />
           ) : (
@@ -118,7 +119,7 @@ export const Category: React.FC<CategoryPropsType> = ({
           {categoryId !== id && (
             <IconButton
               aria-label="Delete"
-              onClick={deleteChoosedCategory}
+              onClick={deleteChosenCategory}
               disabled={editCategoryId === id}
             >
               <ClearIcon color={'secondary'} />

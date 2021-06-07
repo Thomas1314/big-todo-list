@@ -11,7 +11,6 @@ import { useStyles } from './TaskListWrapper.styles';
 import Filter from './Filter';
 import Preloader from './Preloader/Preloader';
 import { DateType } from '@date-io/type';
-import { Grid } from '@material-ui/core';
 
 type ListWrapperType = {
   isListDone: boolean;
@@ -41,7 +40,6 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
 
   const { categories, tasks, history, endNumber, unDoneTasks, dispatch } =
     ListHook();
-  /* console.log(tasks, unDoneTasks); */
 
   const [end, setEnd] = useState<number>(endNumber);
 
@@ -60,7 +58,6 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
   };
 
   useEffect(() => {
-    /* parsed.categoryId ? setCategoryId(parsed.categoryId) : null; */
     switch (parsed._sort) {
       case 'isFavorite,date': {
         setDateSort(true);
@@ -107,7 +104,6 @@ export const ListWrapper: React.FC<ListWrapperType> = ({
 
     dispatch(getTasks({ isListDone, end, searchString, dateFrom, dateTo }));
   }, [dateSort, nameSort, categoryId, end, dateFrom, dateTo]);
-  debugger;
   return (
     <div className={classes.AppCategoryChanger}>
       <Filter
