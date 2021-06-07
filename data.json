@@ -94,7 +94,7 @@
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
-      "isFavorite": true,
+      "isFavorite": false,
       "date": 1622704411908,
       "id": 14
     },
@@ -130,7 +130,7 @@
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
-      "isFavorite": false,
+      "isFavorite": true,
       "date": 1622704411908,
       "id": 19
     },
@@ -225,7 +225,7 @@
       "id": 48
     },
     {
-      "title": "ertertertertertertertertertre",
+      "title": "ertertertertertertert",
       "isDone": false,
       "isEdit": false,
       "categoryId": 3,
@@ -313,6 +313,15 @@
       "isFavorite": false,
       "date": 1623056576357,
       "id": 61
+    },
+    {
+      "title": "qerwerewr",
+      "isDone": false,
+      "isEdit": false,
+      "categoryId": 2,
+      "isFavorite": false,
+      "date": 1623072219551,
+      "id": 62
     }
   ],
   "defaultCategory": {

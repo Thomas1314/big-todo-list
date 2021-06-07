@@ -7,8 +7,6 @@ import { actions, deleteTask, updateTask } from '../redux/actions';
 import { getChangedTaskText } from '../redux/selectors/selectors';
 import Checkbox from '@material-ui/core/Checkbox';
 import { StyledButton } from './TaskButton';
-import StarIcon from '@material-ui/icons/Star';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { CategoryType } from '../types/types';
 import { useStyles } from './TaskItem.styles';
 
@@ -148,7 +146,7 @@ const TaskItem: React.FC<PropsType> = forwardRef(
                 className="material-icons"
                 onClick={updateTaskFavorite}
               >
-                {task.isFavorite ? <StarIcon /> : <StarBorderIcon />}
+                {task.isFavorite ? 'star' : 'star_border'}
               </StyledButton>
             ) : null}
 

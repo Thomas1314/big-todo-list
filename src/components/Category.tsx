@@ -13,7 +13,6 @@ import {
 } from '../redux/selectors/selectors';
 import { CategoryType, updateCategoryParamsType } from '../types/types';
 import { Colors, Icons } from '../api/api';
-import { maxLength } from './../utils/validators/validators';
 
 export type CategoryPropsType = {
   category: CategoryType;

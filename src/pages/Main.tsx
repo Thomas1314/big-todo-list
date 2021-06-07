@@ -10,7 +10,6 @@ import DateFnsUtils from '@date-io/date-fns';
 import { useStyles } from './Main.styles';
 import { ListWrapper } from '../components/TaskListWrapper';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
-import { maxLength } from '../utils/validators/validators';
 
 type DateType = MaterialUiPickersDate | null;
 
@@ -38,7 +37,6 @@ export const Main: React.FC = () => {
     setSelectDateFrom(selectedDateFrom);
     setSelectDateTo(selectedDateTo);
   };
-
   return (
     <Grid container spacing={0}>
       <Grid item xs={12}>

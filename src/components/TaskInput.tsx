@@ -13,7 +13,6 @@ import { Select } from '@material-ui/core';
 import { Icon } from './Icon';
 import { useStyles } from './TaskInput.styles';
 import { newTaskParamsType } from '../types/types';
-import { maxLength } from '../utils/validators/validators';
 
 export const TaskInput: React.FC = () => {
   const classes = useStyles();
@@ -23,7 +22,7 @@ export const TaskInput: React.FC = () => {
   const categoryId = useSelector(selectDefaultCategoryId);
   const [open, setOpen] = useState<boolean>(false);
   const [category, setCategory] = useState<number | null>(categoryId);
-  const [taskDate, setTaskDate] = useState(new Date(Date.now()));
+  const [taskDate] = useState(new Date(Date.now()));
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getCategoriesFromState } from '../redux/selectors/selectors';
 import { Icon } from './Icon';
-import { useStyles } from './TaskListWrapper.styles';
+import { useStyles } from './Filter.styles';
 
 type SwitchesType = {
   title: string;
@@ -61,10 +61,9 @@ const Filter: React.FC<FilterType> = ({
       onChange: onNameSortChange,
     },
   ];
-
   return (
-    <div>
-      <div className="AppCategory">
+    <div className={classes.AppCategory}>
+      <div>
         <Select
           onOpen={onOpen}
           onClose={onClose}
@@ -82,7 +81,7 @@ const Filter: React.FC<FilterType> = ({
           <MenuItem value={51}>Clear</MenuItem>
         </Select>
       </div>
-      <div className="AppSwitches">
+      <div className={classes.AppSwitches}>
         {completedTasksSwitches.map(({ checked, onChange, title }, index) => (
           <div key={index}>
             <span>{title}</span>
