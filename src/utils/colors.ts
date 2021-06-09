@@ -1,4 +1,4 @@
-import { Colors } from '../api/api';
+import { Colors } from '../types/types';
 
 const colors: Colors[] = ['yellowgreen', 'yellow', 'black'];
 

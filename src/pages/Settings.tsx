@@ -16,7 +16,7 @@ import {
   updateDefaultCategory,
 } from '../redux/actions';
 import useStyles from './Settings.styles';
-import { Colors, Icons } from '../api/api';
+import { Colors, Icons } from '../types/types';
 
 export const Settings: React.FC = () => {
   const classes = useStyles();

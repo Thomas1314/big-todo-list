@@ -1,4 +1,4 @@
-import { Icons } from '../api/api';
+import { Icons } from '../types/types';
 
 const icons: Icons[] = ['pets', 'home', 'nightlight_round'];
 

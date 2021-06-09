@@ -25,7 +25,6 @@ export const CompletedTasks: React.FC = () => {
   const handleDateToChange = (date: DateType | null) => {
     setSelectedDateTo(date);
   };
-  debugger;
   return (
     <Grid container spacing={0}>
       <Grid item xs={12}>

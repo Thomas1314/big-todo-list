@@ -12,7 +12,7 @@ import {
   selectDefaultCategoryId,
 } from '../redux/selectors/selectors';
 import { CategoryType, updateCategoryParamsType } from '../types/types';
-import { Colors, Icons } from '../api/api';
+import { Colors, Icons } from '../types/types';
 
 export type CategoryPropsType = {
   category: CategoryType;

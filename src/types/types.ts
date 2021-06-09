@@ -1,6 +1,7 @@
-import { Colors, Icons } from '../api/api';
-
 export type CategoryTitleType = string | string[] | null | undefined;
+
+export type Colors = 'yellowgreen' | 'yellow' | 'black' | '';
+export type Icons = 'pets' | 'home' | 'nightlight_round' | '';
 
 export type CategoryType = {
   icon: Icons;

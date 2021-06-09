@@ -11,7 +11,7 @@ import colors from '../utils/colors';
 import icons from '../utils/icons';
 import { Icon } from './Icon';
 import { actions, addCategory, updateCategory } from '../redux/actions';
-import { Colors, Icons } from '../api/api';
+import { Colors, Icons } from '../types/types';
 
 type CategoryCreatorType = {
   edit: boolean;

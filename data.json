@@ -51,7 +51,14 @@
       "categoryID": null,
       "isFavorite": false,
       "date": 1621323522747,
-      "id": 7
+      "id": 7,
+      "updateTaskParams": {
+        "isFavorite": false,
+        "title": "qweqwe",
+        "isDone": false,
+        "id": 7,
+        "isListDone": true
+      }
     },
     {
       "title": "йц",
@@ -87,7 +94,14 @@
       "categoryID": null,
       "isFavorite": true,
       "date": 1621599251738,
-      "id": 13
+      "id": 13,
+      "updateTaskParams": {
+        "isFavorite": true,
+        "title": "8989898",
+        "isDone": false,
+        "id": 13,
+        "isListDone": true
+      }
     },
     {
       "title": "qwewewerer",
@@ -96,7 +110,14 @@
       "categoryId": 3,
       "isFavorite": false,
       "date": 1622704411908,
-      "id": 14
+      "id": 14,
+      "updateTaskParams": {
+        "isFavorite": true,
+        "id": 14,
+        "isDone": false,
+        "title": "qwewewerer",
+        "isListDone": false
+      }
     },
     {
       "title": "eytrytrytry",
@@ -105,7 +126,14 @@
       "categoryId": 3,
       "isFavorite": false,
       "date": 1622704411908,
-      "id": 16
+      "id": 16,
+      "updateTaskParams": {
+        "isFavorite": true,
+        "id": 16,
+        "isDone": false,
+        "title": "eytrytrytry",
+        "isListDone": false
+      }
     },
     {
       "title": "qw",
@@ -132,7 +160,14 @@
       "categoryId": 3,
       "isFavorite": true,
       "date": 1622704411908,
-      "id": 19
+      "id": 19,
+      "updateTaskParams": {
+        "isFavorite": false,
+        "title": "we",
+        "isDone": true,
+        "id": 19,
+        "isListDone": false
+      }
     },
     {
       "title": "qweqweeK",
@@ -141,7 +176,14 @@
       "categoryId": 3,
       "isFavorite": false,
       "date": 1622704783280,
-      "id": 25
+      "id": 25,
+      "updateTaskParams": {
+        "isFavorite": true,
+        "id": 25,
+        "isDone": false,
+        "title": "qweqweeK",
+        "isListDone": false
+      }
     },
     {
       "title": "qwerty",
@@ -159,7 +201,14 @@
       "categoryId": 3,
       "isFavorite": true,
       "date": 1622714959967,
-      "id": 31
+      "id": 31,
+      "updateTaskParams": {
+        "isFavorite": false,
+        "id": 31,
+        "isDone": false,
+        "title": "qwewerr",
+        "isListDone": false
+      }
     },
     {
       "title": "qwe",
@@ -168,7 +217,14 @@
       "categoryId": 3,
       "isFavorite": false,
       "date": 1622714959967,
-      "id": 33
+      "id": 33,
+      "updateTaskParams": {
+        "isFavorite": true,
+        "id": 33,
+        "isDone": false,
+        "title": "qwe",
+        "isListDone": false
+      }
     },
     {
       "title": "q",
@@ -225,22 +281,20 @@
       "id": 48
     },
     {
-      "title": "ertertertertertertert",
-      "isDone": false,
-      "isEdit": false,
-      "categoryId": 3,
-      "isFavorite": true,
-      "date": 1622717083874,
-      "id": 50
-    },
-    {
       "title": "etertertertertertertrt",
       "isDone": true,
       "isEdit": false,
       "categoryId": 3,
       "isFavorite": false,
       "date": 1622717083874,
-      "id": 51
+      "id": 51,
+      "updateTaskParams": {
+        "isFavorite": false,
+        "title": "etertertertertertertrt",
+        "isDone": false,
+        "id": 51,
+        "isListDone": true
+      }
     },
     {
       "title": "ertretertertrtytyrtyrtyrtytr",
@@ -276,7 +330,14 @@
       "categoryId": 2,
       "isFavorite": false,
       "date": 1622720066105,
-      "id": 56
+      "id": 56,
+      "updateTaskParams": {
+        "isFavorite": true,
+        "id": 56,
+        "isDone": false,
+        "title": "кцукцукцукцукущещуке",
+        "isListDone": false
+      }
     },
     {
       "title": "щшукешкущшещкшещш",
@@ -303,7 +364,14 @@
       "categoryId": 2,
       "isFavorite": false,
       "date": 1623054391770,
-      "id": 60
+      "id": 60,
+      "updateTaskParams": {
+        "isFavorite": false,
+        "title": "qweqwewqeqwe",
+        "isDone": false,
+        "id": 60,
+        "isListDone": true
+      }
     },
     {
       "title": "858585",
@@ -313,19 +381,10 @@
       "isFavorite": false,
       "date": 1623056576357,
       "id": 61
-    },
-    {
-      "title": "qerwerewr",
-      "isDone": false,
-      "isEdit": false,
-      "categoryId": 2,
-      "isFavorite": false,
-      "date": 1623072219551,
-      "id": 62
     }
   ],
   "defaultCategory": {
-    "id": 2
+    "id": 4
   },
   "categories": [
     {

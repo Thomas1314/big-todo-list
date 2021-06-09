@@ -1,7 +1,7 @@
 import React from 'react';
 import { Category } from './Category';
 import { CategoryType } from '../types/types';
-import { Colors, Icons } from '../api/api';
+import { Colors, Icons } from '../types/types';
 
 type PropsType = {
   categories: CategoryType[];
@@ -19,20 +19,18 @@ export const CategoriesList: React.FC<PropsType> = ({
   editCategoryId,
   setButton,
   setChoosesIcon,
-}) => {
-  return (
-    <>
-      {categories.map((category) => (
-        <Category
-          category={category}
-          key={category.id}
-          setEdit={setEdit}
-          setEditCategoryId={setEditCategoryId}
-          editCategoryId={editCategoryId}
-          setButton={setButton}
-          setChoosesIcon={setChoosesIcon}
-        />
-      ))}
-    </>
-  );
-};
+}) => (
+  <>
+    {categories.map((category) => (
+      <Category
+        category={category}
+        key={category.id}
+        setEdit={setEdit}
+        setEditCategoryId={setEditCategoryId}
+        editCategoryId={editCategoryId}
+        setButton={setButton}
+        setChoosesIcon={setChoosesIcon}
+      />
+    ))}
+  </>
+);
